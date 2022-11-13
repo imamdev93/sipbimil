@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class GiziIbuHamil extends Model
 {
     use HasFactory;
+
+    protected $table = 'gizi_ibu_hamil';
+    public $guarded = [];
+
+    public function ibuhamil()
+    {
+        return $this->belongsTo(IbuHamil::class, 'ibu_hamil_id', 'id');
+    }
+
+    public function posyandu()
+    {
+        return $this->belongsTo(Posyandu::class, 'poasyandu_id', 'id');
+    }
 }

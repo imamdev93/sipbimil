@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\GiziIbuHamil;
 use Illuminate\Http\Request;
 
 class GiziIbuHamilController extends Controller
@@ -14,7 +15,7 @@ class GiziIbuHamilController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.gizi-ibu-hamil.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class GiziIbuHamilController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gizi-ibu-hamil.create');
     }
 
     /**
@@ -57,7 +58,8 @@ class GiziIbuHamilController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ibuhamil = GiziIbuHamil::find($id);
+        return view('admin.gizi-ibu-hamil.edit', compact('ibuhamil'));
     }
 
     /**

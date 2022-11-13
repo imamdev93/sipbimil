@@ -8,13 +8,16 @@
                 <option value="{{ $row->id }}">{{ $row->nama }}</option>
                 @endforeach
             </select>
-            @error('user_id')
-            <span class="form-text m-b-none text-danger">{{ $errors->first('user_id') }}</span>
-            @enderror
         </div>
         <div class="col-lg-2">
             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Tambah</button>
         </div>
+        @error('user_id')
+        <label class="col-lg-2 col-form-label"></label>
+        <div class="col-lg-10">
+            <span class="form-text m-b-none text-danger">{{ $errors->first('user_id') }}</span>
+        </div>
+        @enderror
     </div>
     <div class="form-group row">
         <label class="col-lg-2 col-form-label">Tanggal Lahir</label>
@@ -87,6 +90,9 @@
                         <span class="form-text m-b-none text-danger">{{ $errors->first('username') }}</span>
                         @enderror
                     </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-12 col-form-label text-warning">Ket : Password sama dengan username</label>
                 </div>
             </div>
             <div class="modal-footer">

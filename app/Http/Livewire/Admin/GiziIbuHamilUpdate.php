@@ -2,41 +2,41 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Balita;
+use App\Models\IbuHamil;
 use App\Models\Posyandu;
 use Livewire\Component;
 
-class GiziBalitaUpdate extends Component
+class GiziIbuHamilUpdate extends Component
 {
-    public $gizi_balita;
-    public $balita_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
+    public $gizi_ibu_hamil;
+    public $ibu_hamil_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
     public $nama_posyandu;
     public $action = 'update';
 
-    public function mount($gizi_balita)
+    public function mount($gizi_ibu_hamil)
     {
-        if ($gizi_balita) {
-            $this->gizi_balita = $gizi_balita;
-            $this->balita_id = $this->gizi_balita->balita_id;
-            $this->posyandu_id = $this->gizi_balita->posyandu_id;
-            $this->tinggi_badan = $this->gizi_balita->tinggi_badan;
-            $this->berat_badan = $this->gizi_balita->berat_badan;
-            $this->tanggal_pengukuran = $this->gizi_balita->tanggal_pengukuran;
+        if ($gizi_ibu_hamil) {
+            $this->gizi_ibu_hamil = $gizi_ibu_hamil;
+            $this->ibu_hamil_id = $this->gizi_ibu_hamil->ibu_hamil_id;
+            $this->posyandu_id = $this->gizi_ibu_hamil->posyandu_id;
+            $this->tinggi_badan = $this->gizi_ibu_hamil->tinggi_badan;
+            $this->berat_badan = $this->gizi_ibu_hamil->berat_badan;
+            $this->tanggal_pengukuran = $this->gizi_ibu_hamil->tanggal_pengukuran;
         }
     }
 
     public function update()
     {
         $this->validate([
-            'balita_id' => 'required|exists:balita,id',
+            'ibu_hamil_id' => 'nullable|exists:ibu_hamil,id',
             'posyandu_id' => 'required|exists:posyandu,id',
             'tinggi_badan' => 'required|numeric|between:0,200',
-            'berat_badan' => 'required|numeric|between:0,50',
+            'berat_badan' => 'required|numeric|between:0,200',
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {
-            Balita::storeProcess($this->all(), $this->gizi_balita->id);
-            return redirect()->route('admin.gizi-balita.index')->with('success', 'Berhasil merubah data');
+            IbuHamil::storeProcess($this->all(), $this->gizi_ibu_hamil->id);
+            return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil merubah data');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -60,9 +60,9 @@ class GiziBalitaUpdate extends Component
 
     public function render()
     {
-        return view('livewire.admin.gizi-balita-update', [
+        return view('livewire.admin.gizi-ibu-hamil-update', [
             'posyandu' => Posyandu::all(),
-            'balita' => Balita::getAllByUsia(),
+            'bumil' => IbuHamil::all(),
         ]);
     }
 }

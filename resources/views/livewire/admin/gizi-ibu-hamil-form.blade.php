@@ -21,26 +21,26 @@
         @enderror
     </div>
     <div class="form-group row">
-        <label class="col-lg-2 col-form-label">Nama Balita</label>
+        <label class="col-lg-2 col-form-label">Nama</label>
         <div class="col-lg-10" wire:ignore>
-            <select id="balita_id" class="form-control select2_demo_3" wire:model="balita_id">
+            <select id="ibu_hamil_id" class="form-control select2_demo_3" wire:model="ibu_hamil_id">
                 <option value="">Pilih Salah Satu</option>
-                @foreach ($balita as $row)
-                <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                @foreach ($bumil as $row)
+                <option value="{{ $row->id }}">{{ $row->user->nama ?? '-' }}</option>
                 @endforeach
             </select>
         </div>
-        @error('balita_id')
+        @error('ibu_hamil_id')
         <label class="col-lg-2 col-form-label"></label>
         <div class="col-lg-10">
-            <span class="form-text m-b-none text-danger">{{ $errors->first('balita_id') }}</span>
+            <span class="form-text m-b-none text-danger">{{ $errors->first('ibu_hamil_id') }}</span>
         </div>
         @enderror
     </div>
     <div class="form-group row">
         <label class="col-lg-2 col-form-label">Tinggi Badan (cm)</label>
         <div class="col-lg-10">
-            <input type="text" placeholder="Masukan tinggi badan balita (cm)" wire:model.lazy="tinggi_badan" class="form-control">
+            <input type="text" placeholder="Masukan tinggi badan (cm)" wire:model.lazy="tinggi_badan" class="form-control">
             @error('tinggi_badan')
             <span class="form-text m-b-none text-danger">{{ $errors->first('tinggi_badan') }}</span>
             @enderror
@@ -49,7 +49,7 @@
     <div class="form-group row">
         <label class="col-lg-2 col-form-label">Berat Badan (kg)</label>
         <div class="col-lg-10">
-            <input type="text" placeholder="Masukan berat badan balita (kg)" wire:model.lazy="berat_badan" class="form-control">
+            <input type="text" placeholder="Masukan berat badan (kg)" wire:model.lazy="berat_badan" class="form-control">
             @error('berat_badan')
             <span class="form-text m-b-none text-danger">{{ $errors->first('berat_badan') }}</span>
             @enderror
@@ -102,8 +102,8 @@
 </div>
 @push('scripts')
 <script>
-    $('#balita_id').change(function () {
-        @this.set('balita_id', $(this).val())
+    $('#ibu_hamil_id').change(function () {
+        @this.set('ibu_hamil_id', $(this).val())
     })
 
     $('#posyandu_id').change(function () {

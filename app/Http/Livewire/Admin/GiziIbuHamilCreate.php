@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Balita;
+use App\Models\IbuHamil;
 use App\Models\Posyandu;
 use Livewire\Component;
 
-class GiziBalitaCreate extends Component
+class GiziIbuHamilCreate extends Component
 {
-    public $balita_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
+    public $ibu_hamil_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
     public $nama_posyandu;
     public $action = 'store';
 
@@ -22,7 +22,7 @@ class GiziBalitaCreate extends Component
             Posyandu::create([
                 'nama' => $this->nama_posyandu,
             ]);
-            return redirect()->route('admin.gizi-balita.create')->with('success', 'Berhasil menambahkan data posyandu');
+            return redirect()->route('admin.gizi-ibu-hamil.create')->with('success', 'Berhasil menambahkan data posyandu');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -31,15 +31,15 @@ class GiziBalitaCreate extends Component
     public function store()
     {
         $this->validate([
-            'balita_id' => 'required|exists:balita,id',
-            'posyandu_id' => 'required|exists:posyandu,id',
+            'ibu_hamil_id' => 'required|exists:ibu_hamil,id',
+            'posyandu_id' => 'nullable|exists:posyandu,id',
             'tinggi_badan' => 'required|numeric|between:0,200',
-            'berat_badan' => 'required|numeric|between:0,50',
+            'berat_badan' => 'required|numeric|between:0,200',
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {
-            Balita::storeProcess($this->all());
-            return redirect()->route('admin.gizi-balita.index')->with('success', 'Berhasil menambahkan balita');
+            IbuHamil::storeProcess($this->all());
+            return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil menambahkan data');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -47,9 +47,9 @@ class GiziBalitaCreate extends Component
 
     public function render()
     {
-        return view('livewire.admin.gizi-balita-create', [
+        return view('livewire.admin.gizi-ibu-hamil-create', [
             'posyandu' => Posyandu::all(),
-            'balita' => Balita::getAllByUsia(),
+            'bumil' => IbuHamil::all(),
         ]);
     }
 }

@@ -1,10 +1,9 @@
 <div class="col-lg-12">
     <div class="ibox ">
         <div class="ibox-title">
-            <h5>Daftar Gizi Balita</h5>
+            <h5>Daftar Gizi Ibu Hamil</h5>
             <div class="ibox-tools">
-                <a href="#" wire:click="export"  class="btn btn-primary btn-sm">Export Laporan</a>
-                <a href="{{ route('admin.gizi-balita.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
         </div>
         <div class="ibox-content table-responsive">
@@ -12,11 +11,9 @@
                 <div class="col-md-3">
                     <select wire:model="status" class="form-control">
                         <option value="">Pilih Status</option>
-                        <option value="Gizi Buruk">Gizi Buruk</option>
-                        <option value="Gizi Kurang">Gizi Kurang</option>
-                        <option value="Gizi Baik">Gizi Baik</option>
-                        <option value="Berisiko gizi lebih">Berisiko gizi lebih</option>
-                        <option value="Gizi Lebih">Gizi Lebih</option>
+                        <option value="Kurus">Kurus</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Gemuk">Gemuk</option>
                         <option value="Obesitas">Obesitas</option>
                     </select>
                 </div>
@@ -38,7 +35,7 @@
                 <thead>
                     <tr>
                         <th width="2%">#</th>
-                        <th width="15%">Nama Balita</th>
+                        <th width="15%">Nama</th>
                         <th width="15%">Tinggi Badan (CM)</th>
                         <th width="15%">Berat Badan (KG)</th>
                         <th width="20%">Tanggal Pengukuran</th>
@@ -48,11 +45,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(count($balita) > 0)
-                    @foreach ($balita as $row)
+                    @if(count($bumil) > 0)
+                    @foreach ($bumil as $row)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $row->balita->nama ?? '-' }}</td>
+                        <td>{{ $row->ibuhamil->user->nama ?? '-' }}</td>
                         <td>{{ $row->tinggi_badan ?? '-' }}</td>
                         <td>{{ $row->berat_badan ?? '-' }}</td>
                         <td>{{ $row->tanggal_pengukuran ?? '-' }}</td>
@@ -61,7 +58,7 @@
                         <td>
                             <a href="#" class="btn btn-sm btn-secondary" wire:click="show({{ $row->id }})"
                                 data-toggle="modal" data-target="#show"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.gizi-balita.edit', $row->id)}}"><i
+                            <a class="btn btn-sm btn-primary" href="{{ route('admin.gizi-ibu-hamil.edit', $row->id)}}"><i
                                     class="fa fa-edit"></i></a>
                             <button class="btn btn-sm btn-danger" wire:click="show({{ $row->id }})" data-toggle="modal"
                                 data-target="#hapus"><i class="fa fa-trash"></i></button>
@@ -75,7 +72,7 @@
                     @endif
                 </tbody>
             </table>
-            {{ $balita->links() }}
+            {{ $bumil->links() }}
         </div>
     </div>
     <div wire:ignore.self class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -83,28 +80,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Balita</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Ibu Hamil</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-lg-4 col-form-label">Nama Balita</label>
+                        <label class="col-lg-4 col-form-label">Nama</label>
                         <div class="col-lg-8 mt-2">
-                            {{ $data ? $data->balita->nama ?? '-' : '-' }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-4 col-form-label">Jenis Kelamin</label>
-                        <div class="col-lg-8 mt-2">
-                            {{ $data ? $data->balita->jenis_kelamin : '-' }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-4 col-form-label">Tanggal Lahir</label>
-                        <div class="col-lg-8 mt-2">
-                            {{ $data ? $data->balita->tanggal_lahir : '-' }}
+                            {{ $data ? $data->ibuhamil->user->nama ?? '-' : '-' }}
                         </div>
                     </div>
                     <div class="form-group row">

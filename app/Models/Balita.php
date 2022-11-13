@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Balita extends Model
 {
@@ -17,6 +18,15 @@ class Balita extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public static function getAllByUsia()
+    {
+        return self::all()->filter(function ($item) {
+            $date = Carbon::now();
+            if ($date->diffInMonths($item->tanggal_lahir) <= 60) {
+                return $item;
+            }
+        });
+    }
     public static function storeProcess($data, $id = null)
     {
         $balita = self::getBalita($data);
