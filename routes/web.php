@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GiziBalitaController;
 use App\Http\Controllers\Admin\GiziIbuHamilController;
 use App\Http\Controllers\Admin\IbuHamilController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\Admin\OperatorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/login', [BerandaController::class, 'login'])->name('login');
+Route::post('/login', [BerandaController::class, 'loginProcess'])->name('loginProcess');
+Route::get('/dashboard', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware('auth:web');
+Route::get('/logout', [BerandaController::class, 'logout'])->name('logout')->middleware('auth:web');
+Route::get('/data-balita', [BerandaController::class, 'getDataBalita'])->name('balita')->middleware('auth:web');
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('login', [AuthController::class, 'loginView'])->name('loginView');
     Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth:admin')->group(function () {
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('dashboard', DashboardController::class)->name('dashboard');
     });
@@ -38,4 +43,6 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('gizi-balita', GiziBalitaController::class);
     //Data Gizi Ibu Hamil
     Route::resource('gizi-ibu-hamil', GiziIbuHamilController::class);
+    //Data Operator
+    Route::resource('operator', OperatorController::class);
 });

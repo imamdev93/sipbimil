@@ -1,0 +1,215 @@
+/************************************
+* Component - Blog Feed Display
+*************************************/
+
+.blog-feed-display-section {
+  z-index: 1;
+  .box-wrapper {
+    .secton-content {
+      margin-bottom: 40px;
+      @include breakpoint(large){
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.blog-feed-shape{
+  position: absolute;
+  width: 971px;
+  height: 971px;
+  border: 1px solid rgba($colorDarkBlue, .08);
+  border-radius: 50%;
+  background: transparent;
+  z-index: -1;
+
+  &-1{
+    top: -240px;
+    right: -240px;
+  }
+  &-2{
+    top: 285px;
+    right: 310px;
+  }
+}
+
+.blog-feed-slider {
+  .swiper-container {
+    display: flex;
+    align-items: center;
+    @include breakpoint(large) {
+      height: 570px;
+    }
+    @include breakpoint(xlarge) {
+      height: 615px;
+    }
+    // @include breakpoint(xxxlarge) {
+    //   height: 675px;
+    // }
+  }
+
+  .swiper-pagination {
+    display: flex;
+    flex-direction: column;
+    top: calc(100% + 40px);
+    left: 50%;
+    flex-direction: row;
+    transform: translateX(-50%);
+    @include breakpoint(xxlarge) {
+      top: 50%;
+      left: -60px;
+      flex-direction: column;
+      transform: translateY(-50%);
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    outline: none;
+    background: #424246;
+    margin-right: 15px;
+
+    &-active {
+      background: $themeColor;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    @include breakpoint(xxlarge) {
+      flex-direction: column;
+      transform: translateY(-50%);
+      margin-bottom: 15px;
+      margin-right: 0;
+    }
+  }
+}
+
+.blog-feed-single-item {
+  background: $white;
+  border-radius: 35px;
+  height: 100% !important;
+  padding: 40px 30px;
+  @include breakpoint(small) {
+    padding: 37.5px 40px;
+  }
+  @include breakpoint(medium) {
+    padding: 15px;
+    border-radius: 20px;
+  }
+  @include breakpoint(large) {
+    border-radius: 35px;
+    padding: 37.5px 40px;
+  }
+  @include breakpoint(xlarge) {
+    padding: 75px;
+  }
+
+  .image {
+    width: 100%;
+    height: 245px;
+    overflow: hidden;
+    @include breakpoint(small) {
+      height: 350px;
+    }
+    @include breakpoint(large) {
+      height: 245px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+    }
+  };
+
+  .content {
+    margin-top: 35px;
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      flex-direction: column;
+      @include breakpoint(small) {
+        align-items: center;
+        flex-direction: row;
+      }
+
+      .catagory {
+        color: #3232ac;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+
+      .meta-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include breakpoint(small) {
+          flex-direction: row;
+        }
+
+        a {
+          position: relative;
+          padding-right: 15px;
+          color: $bodyColor;
+
+          &::after {
+            position: absolute;
+            content: "|";
+            top: 50%;
+            transform: translateY(-50%);
+            left: calc(100% - 7.5px);
+            display: none;
+            @include breakpoint(small) {
+              display: block;
+            }
+          }
+
+          &:last-child {
+            padding-left: 0;
+
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .title {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: $colorDarkBlue;
+      text-overflow: inherit;
+       white-space: inherit;
+       overflow: inherit;
+      @include breakpoint(medium){
+        font-size: 22px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      @include breakpoint(large){
+       text-overflow: inherit;
+       white-space: inherit;
+       overflow: inherit;
+      }
+      a {
+        color: $colorDarkBlue;
+      }
+    }
+
+    .btn {
+      margin-top: 20px;
+    }
+  }
+}

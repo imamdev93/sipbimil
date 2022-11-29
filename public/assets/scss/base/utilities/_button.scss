@@ -1,0 +1,239 @@
+/*Buttion CSS*/
+@keyframes MoveScaleUpInitial {
+	to {
+		transform: translate3d(0,-105%,0) scale3d(1,2,1);
+		opacity: 0;
+	}
+}
+@keyframes MoveScaleUpEnd {
+	from {
+		transform: translate3d(0,100%,0) scale3d(1,2,1);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+
+.btn {
+	font-size: 15px;
+	font-weight: 400;
+	transition: $baseTransition;
+	position: relative;
+	overflow: hidden;
+
+	&:focus {
+		box-shadow: none !important;
+	}
+
+	&-sm {
+		border-radius: 15px;
+		padding: 10px 20px;
+		@include breakpoint(xlarge){
+			padding: 15px 40px;
+		}
+	}
+
+	&-md {
+		padding: 10px 15px;
+		@include breakpoint(small) {
+			padding: 15px 25px;
+		}
+		@include breakpoint(medium) {
+			padding: 15px 30px;
+		}
+		@include breakpoint(large) {
+			padding: 15px 35px;
+		}
+		@include breakpoint(xlarge) {
+			padding: 18px 43px;
+		}
+	}
+
+	&-lg {
+		padding: 10px 15px;
+		@include breakpoint(small) {
+			padding: 15px 25px;
+		}
+		@include breakpoint(medium) {
+			padding: 15px 30px;
+		}
+		@include breakpoint(large) {
+			padding: 15px 35px;
+		}
+		@include breakpoint(xlarge) {
+			padding: 18px 43px;
+		}
+	}
+
+	&-animate {
+		&::before {
+			position: absolute;
+			content: '';
+			width: 120%;
+			height: 0;
+			padding-bottom: 120%;
+			top: -110%;
+			left: -10%;
+			border-radius: 50%;
+			transform: translate3d(0,68%,0) scale3d(0,0,0);
+		}
+
+		&::after {
+			position: absolute;
+			content: '';
+			transform: translate3d(0,-100%,0);
+			transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+		}
+
+		span {
+			display: block;
+			position: relative;
+			z-index: 10;
+		}
+
+		&:hover {
+			&::before {
+				transform: translate3d(0,0,0) scale3d(1,1,1);
+				transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+			}
+
+			&::after {
+				transform: translate3d(0,0,0);
+				transition-duration: 0.05s;
+				transition-delay: 0.4s;
+				transition-timing-function: linear;
+			}
+
+			span {
+				animation: MoveScaleUpInitial 0.3s forwards, MoveScaleUpEnd 0.3s forwards 0.3s;
+			}
+		}
+	}
+
+	&-default {
+		background: $white;
+		color: $themeColor;
+		border-radius: 15px;
+		border: 2px solid $white;
+
+		&::before {
+			background: $themeColor;
+		}
+
+		&::after {
+			background: $themeColor;
+		}
+
+		&:hover {
+			color: $white;
+			background: $themeColor;
+		}
+	}
+
+	&-default-alt {
+		background: $themeColor;
+		color: $white;
+		border-radius: 15px;
+		border: 2px solid $themeColor;
+
+		&::before {
+			background: $white;
+		}
+
+		&::after {
+			background: $white;
+		}
+
+		&:hover {
+			border-color: $themeColor;
+			color: $themeColor;
+			background: $white;
+		}
+	}
+
+	&-default-outline {
+		border-radius: 15px;
+		border: 2px solid $themeColor;
+		color: $themeColor;
+
+		&::before {
+			background: $themeColor;
+		}
+
+		&::after {
+			background: $themeColor;
+		}
+
+		&:hover {
+			color: $white;
+		}
+	}
+
+	&-default-outline-alt {
+		border-radius: 15px;
+		border: 2px solid $white;
+		color: $white;
+		z-index: 1;
+
+		&::before {
+			background: $white;
+			z-index: -1;
+		}
+
+		&::after {
+			background:  $white;
+			z-index: -1;
+		}
+
+		&:hover {
+			color: $themeColor !important;
+		}
+	}
+
+	&-light-pink {
+		background: $colorLightPink;
+		color: #fc5558;
+		border: 1px solid $colorLightPink;
+
+		&:hover {
+			border-color: #fc5558;
+			color: #fc5558;
+		}
+	}
+
+	&-light-yellow {
+		background: $colorLightYellow;
+		color: #ec8c19;
+		border: 1px solid $colorLightYellow;
+
+		&:hover {
+			border-color: #ec8c19;
+			color: #ec8c19;
+		}
+	}
+
+	&-light-cyan {
+		background: $colorLightCyan;
+		color: #00998a;
+		border: 1px solid $colorLightCyan;
+
+		&:hover {
+			border-color: #00998a;
+			color: #00998a;
+		}
+	}
+
+	&-light-blue {
+		background: $colorLightBlue-2;
+		color: $themeColor;
+		border: 1px solid $colorLightBlue-2;
+
+		&:hover {
+			border-color: $themeColor;
+			color: $themeColor;
+		}
+	}
+}

@@ -1,0 +1,52 @@
+/*****************************
+* Component - About Display
+*****************************/
+.about-display-img{
+    width: 100%;
+    text-align: center;
+    @include breakpoint(medium) {
+        margin-right: 50px;
+      }
+      @include breakpoint(large) {
+        margin-right: 80px;
+      }
+      @include breakpoint(xxlarge) {
+        margin-right: 110px;
+      }
+      @include breakpoint(xxxlarge) {
+        margin-right: 135px;
+      }
+    @include breakpoint(xxxlarge){
+        width: 605px;
+    }
+}
+.about-content{
+    width: 100%;
+    margin-top: 60px;
+    @include breakpoint(medium){
+        margin-top: 0;
+    }
+    @include breakpoint(xxxlarge){
+        width: 565px;
+    }
+    h5{
+        font-family:$body-font;
+        font-size: 18px;
+        line-height: 1.75;
+        margin-top: 35px;
+        font-weight: 400;
+        color:  $colorDarkBlue;
+
+        @include breakpoint(large){
+            font-size: 20px;
+        }
+    }
+
+    p{
+        margin-top: 23px;
+    }
+
+    .btn{
+        margin-top: 15px;
+    }
+}

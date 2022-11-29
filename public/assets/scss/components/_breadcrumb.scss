@@ -1,0 +1,110 @@
+/************************************
+* Component - Breadcrumb
+*************************************/
+
+.breadcrumb-bg{
+  background: $themeColor;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  position: relative;
+  @include breakpoint(medium){
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
+  @include breakpoint(large){
+    padding-top: 180px;
+    padding-bottom: 150px;
+  }
+  @include breakpoint(xlarge){
+    padding-top: 200px;
+    padding-bottom: 150px;
+  }
+  @include breakpoint(xxxlarge){
+    padding-top: 235px;
+    padding-bottom: 150px;
+  }
+  .container{
+    .title{
+      font-size: 32px;
+      font-weight: 400;
+      color: $white;
+      margin-bottom: 15px;
+
+      @include breakpoint(small){
+        font-size: 40px;
+      }
+      @include breakpoint(medium){
+        font-size: 45px;
+      }
+      @include breakpoint(large){
+        font-size: 50px;
+      }
+      @include breakpoint(xlarge){
+        font-size: 55px;
+      }
+      @include breakpoint(xxlarge){
+        font-size: 60px;
+      }
+      @include breakpoint(xxxlarge){
+        font-size: 65px;
+      }
+    }
+  }
+}
+
+.breadcrumb{
+  .breadcrumb-item{
+    font-weight: 500;
+    color: $colorOrange;
+    &::before{
+      color: #dfdfe7;
+    }
+    a{color: #dfdfe7}
+  }
+}
+
+.breadcrumb-shape{
+  position: absolute;
+  border-radius: 50%;
+}
+
+.breadcrumb-shape-outline{
+  border: 1px solid rgba($white, .1);
+  width: 973px;
+  height: 973px;
+
+  &-1{
+    top: 60%;
+    transform: translateY(-50%);
+    left: calc(0% - 788px);
+  }
+  &-2{
+    top: -380px;
+    left: calc(0% - 178px);
+  }
+  &-3{
+    top: -140px;
+    right: calc(0% - 261px);
+  }
+  &-4{
+    top: -375px;
+    right: calc(0% - 863px);
+  }
+}
+
+.breadcrumb-shape-fill{
+  background: rgba($white, .05);
+  &-1{
+    top: 275px;
+    left: 325px;
+    width: 127px;
+    height: 127px;
+  }
+  &-2{
+    top: 185px;
+    right: 500px;
+    width: 37px;
+    height: 37px;
+  }
+}

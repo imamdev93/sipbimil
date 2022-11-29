@@ -8,11 +8,11 @@
 
     <title>Login | SIPBIMIL</title>
 
-    <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
-    <link href="{{asset('admin/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -24,7 +24,7 @@
             <div>
                 <h1 class="logo-name">IN+</h1>
             </div>
-            <h4>Sistem Informasi Perkembangan Balita & Ibu Hamil</h4>
+            <h4>Monitoring Perkembangan Balita & Ibu Hamil</h4>
             <p>Login untuk masuk ke halaman admin</p>
             <form class="m-t" role="form" action="{{ route('admin.login') }}" method="POST">
                 @csrf
@@ -44,9 +44,9 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="{{asset('admin/js/jquery-3.1.1.min.js')}}"></script>
-    <script src="{{asset('admin/js/popper.min.js')}}"></script>
-    <script src="{{asset('admin/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('admin/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('admin/js/popper.min.js') }}"></script>
+    <script src="{{ asset('admin/js/bootstrap.js') }}"></script>
 
 </body>
 

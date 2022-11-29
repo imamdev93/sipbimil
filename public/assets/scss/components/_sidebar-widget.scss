@@ -1,0 +1,204 @@
+/************************************
+* Component - Sidebar Widgets
+*************************************/
+
+/* Sidebar Wrapper - Style 1 */
+.content-wrappper-area{
+  .sidebar-area{
+    width: 100%;
+    margin-right: 0px;
+    margin-top: 70px;
+    @include breakpoint(xlarge){
+      margin-top: 0;
+      width: 500px;
+      margin-right: 70px;
+    }
+  }
+
+  .content-area{
+    width: 100%;
+    @include breakpoint(xlarge){
+      width: calc(100% - 570px)
+    }
+  }
+
+}
+
+/* Sidebar Wrapper  - Style 2 */
+.custom-container-grid-wrappper {
+  .custom-grid-3{
+    width: 100%;
+    @include breakpoint(large){
+      width: calc(40% - 25px);
+    }
+    @include breakpoint(xlarge){
+      width: calc(30% - 25px);
+    }
+  }
+
+  .custom-grid-9{
+    width: 100%;
+    @include breakpoint(large){
+    width: calc(70% - 70px);
+    }
+    @include breakpoint(xlarge){
+    width: calc(80% - 70px);
+    }
+  }
+
+  .ml-70{
+    margin-left: 0;
+    @include breakpoint(large){
+      margin-left: 70px;
+    }
+  }
+  .mr-70{
+    margin-right: 0;
+    @include breakpoint(large){
+      margin-right: 70px;
+    }
+  }
+}
+
+.widget-sidebar-area {
+  margin-top: 80px;
+  @include breakpoint(large){
+    margin-top: 0;
+  }
+}
+
+/* Widget Single Item */
+.widget-single-item{
+  margin-bottom: 60px;
+  &:last-child{
+    margin-bottom: 0px;
+  }
+}
+.widget-inner-box{
+  .title{
+    font-size: 35px;
+    font-weight: 600;
+    color: $colorDarkBlue;
+    margin-bottom: 30px;
+  }
+}
+
+/*Widget Navigation*/
+.widget-default-nav{
+  li{
+
+    margin-bottom: 15px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    a{
+      display: block;
+      border-radius: 10px;
+      color: $bodyColor;
+      background: $colorGray-2;
+      padding: 20px 30px;
+
+      &:hover{
+        color: $white;
+        background: $themeColor;
+      }
+    }
+  }
+}
+
+/*Widget Blog Post*/
+.widget-blog-post-single-item{
+  display: flex;
+  padding: 20px;
+  border: 1px solid $colorGray-2;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: $baseTransition;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  &:hover{
+      border-color: $themeColor;
+  }
+  .image{
+    display: block;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    margin-right: 25px;
+    img{
+      border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content{
+    width: calc(100% - 105px);
+    .date{
+      margin-bottom: 5px;
+    }
+    .title{
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      a{
+        color: $colorDarkBlue;
+        &:hover{
+          color: $themeColor;
+        }
+      }
+      
+    }
+    .click-more{
+      color: $themeColor;
+      position: relative;
+
+      &::after{
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 0%;
+        background: $themeColor;
+        right: 0;
+        left: auto;
+        bottom: -8px;
+        transition: $baseTransition;
+      }
+
+      &:hover{
+        &::after{
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+/*Widget Tag*/
+.widget-default-tag{
+  margin-bottom: -10px;
+  margin-right: -10px;
+  li{
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  a{
+    color: $bodyColor;
+    font-size: 14px;
+    display: block;
+    border-radius: 10px;
+    padding: 12px 25px;
+    border: 1px solid #e4e4f3;
+    &:hover{
+      color: $white;
+      background: $themeColor;
+      border-color: $themeColor;
+    }
+  }
+}

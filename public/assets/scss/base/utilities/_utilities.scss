@@ -1,0 +1,90 @@
+/*Utilities CSS*/
+.mb-n20{
+  margin-bottom: -20px
+}
+
+.mb-20{
+  margin-bottom: 20px
+}
+
+.mb-n40{
+  margin-bottom: -40px
+}
+
+.mb-40{
+  margin-bottom: 40px
+}
+
+.mb-n60{
+  margin-bottom: -60px
+}
+
+.mb-60{
+  margin-bottom: 60px
+}
+
+
+.icon-text-left{
+    i{padding-left: 7px;}
+}
+.icon-text-right{
+    i{padding-right: 7px;}
+}
+
+.container-border-radius{
+    border-radius: 15px;
+}
+
+.icon-space-left{
+    i{
+        padding-left: 7.5px;
+        @include breakpoint(xlarge){
+            padding-left: 15px;
+        }
+    }
+}
+.icon-space-right{
+    i{
+        padding-right: 7.5px;
+        @include breakpoint(xlarge){
+            padding-right: 15px;
+        }
+    }
+}
+
+.review-star{
+    li{
+        display: inline-block;
+        font-size: 15px;
+        letter-spacing: 0.15em;
+        &.empty{color: #e1e1e1}
+    }
+}
+
+.img-responsive{
+    img{width: 100%;}
+}
+
+.pos-relative{
+    position: relative;
+}
+
+.pos-absolute{
+    position: absolute;
+}
+
+.img-hover-zoom{
+    overflow: hidden;
+    img{
+        transform: scale(1);
+        transition: $baseTransition;
+        &:hover{
+            transform: scale(1.03);
+        }
+    }
+}
+
+.nice-select .list{
+    left: auto;
+    right: 0;
+}

@@ -1,0 +1,151 @@
+/*****************************
+* Component - Cases Display
+*****************************/
+.cases-display-section .secton-content{
+    margin-bottom: 0px;
+    @include breakpoint(medium){
+        margin-bottom: 50px;
+    }
+}
+/*Emergency Call Box*/
+.emergency-call-box{
+    background: $colorDarkBlue;
+    border-radius: 30px;
+    width: 100%;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 55px;
+    margin-bottom: 50px;
+
+    @include breakpoint(medium){
+        margin-top: 0;
+        width: 340px;
+        height: 340px;
+    }
+    @include breakpoint(xlarge){
+        width: 470px;
+        height: 400px;
+    }
+    &::before,
+    &::after{
+        position: absolute;
+        content: "";
+        width: 50px;
+        height: 35px;
+    }
+
+    &::before{
+        background: url(../images/icons/emergency-call-dotted-icon-2.svg);
+        top: calc(0% + 40px);
+        left: calc(0% + 40px);
+    }
+    &::after{
+        background: url(../images/icons/emergency-call-dotted-icon-1.svg);
+        bottom: calc(0% + 40px);
+        right: calc(0% + 40px);
+    }
+
+    .title{
+        font-size: 25px;
+        line-height: 2;
+        color: #66d2b4;
+        font-weight: 300;
+
+        @include breakpoint(xlarge){
+            line-height: 2.8;
+        }
+
+        a{
+            display: block;
+            font-size: 33px;
+            color: $white;
+            font-weight: 600;
+        }
+    }
+
+    a{
+        font-size: 17px;
+        font-weight: 500;
+        color: $colorOrange;
+    }
+}
+
+/*Cases Slider */
+.cases-slider{
+    .swiper-button-prev{
+        left: 0px;
+        display: none;
+        @include breakpoint(large){
+            display: flex;
+            left: -45px;
+        }
+        @include breakpoint(xxlarge){
+            left: -60px;
+        }
+        &::after{
+            content: "\eab5";
+        }
+    }
+    .swiper-button-next{
+        right: 0px;
+        display: none;
+        @include breakpoint(large){
+            display: flex;
+            right: -45px;
+        }
+        @include breakpoint(xxlarge){
+            right: -60px;
+        }
+        &::after{
+            content: "\eab8";
+        }
+    }
+}
+
+
+.cases-slider-single-item{
+
+    .image{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        height: auto;
+        overflow: hidden;
+    }
+    
+    .content{
+        .title{
+            margin-top: 40px;
+            font-size: 26px;
+            font-weight: 600;
+            color: $colorDarkBlue;
+
+            @include breakpoint(medium){
+                font-size: 28px;
+            }
+            @include breakpoint(xlarge){
+                font-size: 32px;
+            }
+        }
+
+        .btn{
+            margin-top: 20px;
+            @include breakpoint(xxxlarge){
+                margin-top: 35px;
+            }
+        }
+    }
+}
+.bg-light-pink{
+    background: $colorLightPink;
+}
+.bg-light-yellow{
+    background: $colorLightYellow;
+}
+.bg-light-cyan{
+    background: $colorLightCyan;
+}

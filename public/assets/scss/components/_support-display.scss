@@ -1,0 +1,268 @@
+/************************************
+* Component - Support  Display
+*************************************/
+
+.support-display-section{
+    position: relative;
+    .box-wrapper{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .section-box{
+        padding-top: 80px;
+        padding-bottom: 50px;
+        @include breakpoint(medium){
+            padding-top: 100px;
+        }
+        @include breakpoint(large){
+            padding-top: 125px;
+            padding-bottom: 80px;
+        }
+        @include breakpoint(xlarge){
+            padding-top: 135px;
+        }
+
+        @include breakpoint(xxlarge){
+            padding-top: 165px;
+        }
+
+        @include breakpoint(xxxlarge){
+            padding-top: 165px;
+        }
+    }
+    .secton-content{
+        width: 100%;
+        text-align: center;
+        @include breakpoint(xlarge){
+            text-align: left;
+        }
+        @include breakpoint(xxxlarge){
+            width: 875px;
+        }
+    }
+    .company-logo-slider{
+        width: 100%;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        @include breakpoint(medium){
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        @include breakpoint(large){
+            padding-top: 125px;
+            padding-bottom: 125px;
+        }
+        @include breakpoint(xlarge){
+            width: 55%;
+            padding: 150px 90px 400px;
+        }
+        @include breakpoint(xxlarge){
+            width: 55%;
+            padding: 200px 90px 495px;
+        }
+        @include breakpoint(xxxlarge){
+            width: 1045px;
+            padding: 200px 90px 550px;
+        }
+    }
+}
+
+.promo-video-wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+    @include breakpoint(xlarge){
+        position: absolute;
+        top: calc(100% - 350px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        z-index: 11;
+        overflow: hidden;
+        top: calc(100% - 250px);
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    @include breakpoint(xxlarge){
+        top: calc(100% - 300px);
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+    @include breakpoint(xxxlarge){
+        top: calc(100% - 350px);
+        padding-left: 185px;
+        padding-right: 185px;
+    }
+}
+
+.promo-video{
+    background: #f5f5fc;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    @include breakpoint(medium){
+        margin-top: 100px;
+    }
+    @include breakpoint(large){
+        padding: 0;
+        height: 750px;
+        margin-top: 125px;
+    }
+    @include breakpoint(xlarge){
+        margin-top: 0;
+    }
+    .image-1{
+        position: static;
+        margin-top: 180px;
+       @include breakpoint(small){
+           width: 60%;
+       }
+       @include breakpoint(medium){
+           width: 50%;
+       }
+        @include breakpoint(large){
+            position: absolute;
+            left: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            margin-top: 0px;
+        }
+        @include breakpoint(xlarge){
+            margin-top: 0;
+            left: 160px;
+        }
+    }
+    .image-2{
+        position: static;
+        @include breakpoint(large){
+            position: absolute;
+            right: 130px;
+            bottom: 0;
+        }
+       
+    }
+
+    .video-link{
+        border-radius: 50%;
+        background: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+
+        @include breakpoint(large){
+            position: absolute;
+            left: 60%;
+            top: -170px;
+            width: 400px;
+            height: 400px;
+        }
+        @include breakpoint(xlarge){
+            top: -170px;
+            right: 540px;
+            width: 465px;
+            height: 465px;
+        }
+        @include breakpoint(xxlarge){
+            top: -170px;
+            right: 540px;
+            width: 465px;
+            height: 465px;
+        }
+        @include breakpoint(xxxlarge){
+            top: -170px;
+            right: 640px;
+            width: 665px;
+            height: 665px;
+        }
+        .wave-btn{
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid $themeColor;
+            color: $colorOrange;
+            display: block;
+            line-height: 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background: $white;
+           @include breakpoint(small){
+               line-height: 80px;
+                width: 80px;
+                height: 80px;
+           }
+            @include breakpoint(large){
+                margin-top: 170px;
+                line-height: 100px;
+                width: 100px;
+                height: 100px;
+            }
+            @include breakpoint(large){
+                line-height: 120px;
+                width: 120px;
+                height: 120px;
+            }
+
+            &::before{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: transparent;
+                border-radius: 50%;
+                z-index: -1;
+                border: 2px solid $themeColor;
+                animation-name: wave-animate;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                animation-fill-mode: backwards;
+                animation-direction: normal;
+                animation-delay: 1s;
+            }
+
+            &::after{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: transparent;
+                border-radius: 50%;
+                z-index: -1;
+                border: 2px solid $themeColor;
+                animation-name: wave-animate;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                animation-fill-mode: backwards;
+                animation-direction: normal;
+                animation-delay: 2s;
+            }
+
+            .ripple {
+                background: $white;
+                border-radius: 50%;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+

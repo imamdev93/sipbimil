@@ -42,6 +42,16 @@ class GiziIbuHamilUpdate extends Component
         }
     }
 
+    public function deletePosyandu($id)
+    {
+        try {
+            Posyandu::find($id)->delete();
+            return redirect()->route('admin.gizi-ibu-hamil.edit', ['gizi_ibu_hamil' => $this->gizi_ibu_hamil->id])->with('success', 'Berhasil menghapus data');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
     public function storePosyandu()
     {
         $this->validate([
@@ -52,7 +62,7 @@ class GiziIbuHamilUpdate extends Component
             Posyandu::create([
                 'nama' => $this->nama_posyandu,
             ]);
-            return redirect()->route('admin.gizi-balita.create')->with('success', 'Berhasil menambahkan data posyandu');
+            return redirect()->route('admin.gizi-ibu-hamil.edit', ['gizi_ibu_hamil' => $this->gizi_ibu_hamil->id])->with('success', 'Berhasil menambahkan data posyandu');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

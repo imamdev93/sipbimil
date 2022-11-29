@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         try {
-            if (!Auth::attempt($request->only('username', 'password'))) {
+            if (!Auth::guard('admin')->attempt($request->only('username', 'password'))) {
                 return redirect()->route('admin.loginView')->with('error', 'Gagal Login');
             }
             return redirect()->route('admin.dashboard')->with('success', 'Berhasil Login');

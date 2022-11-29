@@ -37,4 +37,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function balitas()
+    {
+        return $this->hasMany(Balita::class, 'user_id', 'id')->orderBy('created_at');
+    }
+
+    public function bumil()
+    {
+        return $this->hasOne(IbuHamil::class, 'user_id', 'id');
+    }
+
+    public function posyandu()
+    {
+        return $this->hasOne(Posyandu::class, 'id', 'posyandu_id');
+    }
 }

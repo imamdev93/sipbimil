@@ -1,0 +1,109 @@
+/************************************
+* Component - Contact Banner Display
+*************************************/
+.contact-banner-area{
+  background: $themeColor;
+  border-radius: 35px;
+  position: relative;
+  overflow: hidden;
+  height: 580px;
+  @include breakpoint(large){
+    height: 610px;
+  }
+  @include breakpoint(xlarge){
+    height: 650px;
+  }
+
+  @include breakpoint(xxxlarge){
+    height: 525px;
+  }
+  .content{
+    text-align: center;
+    @include breakpoint(large){
+      text-align: left;
+    }
+    .title{
+      color: $white;
+      font-size: 30px;
+      font-weight: 600;
+      width: 100%;
+      margin-bottom: 20px;
+      span{
+        font-weight: 300;
+      }
+
+      @include breakpoint(large){
+        font-size: 48px;
+        width: 55%;
+      }
+      @include breakpoint(xlarge){
+        width: 45%;
+      }
+      @include breakpoint(xxlarge){
+        width: 45%;
+      }
+      @include breakpoint(xxxlarge){
+        width: 45%;
+      }
+    }
+    padding: 45px 40px 40px;
+    @include breakpoint(small){
+      padding: 75px 50px 50px;
+    }
+    @include breakpoint(medium){
+      padding: 95px 50px 50px;
+    }
+    @include breakpoint(large){
+      padding: 75px 50px 50px;
+    }
+    @include breakpoint(xlarge){
+      padding: 110px 0 0 140px;
+    }
+    @include breakpoint(xxlarge){
+      padding: 110px 0 0 140px;
+    }
+    @include breakpoint(xxxlarge){
+      padding: 110px 0 0 140px;
+    }
+  }
+
+  .image-1{
+    position: absolute;
+    bottom: calc(0% - 155px);
+    right: 30px;
+    width: 200px;
+    @include breakpoint(large){
+        right: 140px;
+        width: auto;
+    }
+    @include breakpoint(xlarge){
+        right: 140px;
+        width: auto;
+    }
+    @include breakpoint(xxlarge){
+        right: 140px;
+        width: auto;
+    }
+    @include breakpoint(xxxlarge){
+        right: 140px;
+        width: auto;
+    }
+  }
+  .image-2{
+    position: absolute;
+    left: 460px;
+    bottom: calc(0% - 15px);
+    display: none;
+
+    @include breakpoint(small){
+      display: block;
+      left: 30px;
+    }
+    @include breakpoint(xxlarge){
+        left: 350px;
+    }
+    @include breakpoint(xxxlarge){
+        left: 460px;
+    }
+  }
+}

@@ -9,7 +9,7 @@ use Livewire\Component;
 class BalitaCreate extends Component
 {
     public $nama, $jenis_kelamin, $user_id, $alamat, $rt, $rw, $tanggal_lahir;
-    public $nama_ortu, $username;
+    public $nama_ortu, $username, $password, $password_confirmation;
     public $action = 'store';
 
     public function store()
@@ -44,13 +44,14 @@ class BalitaCreate extends Component
         $this->validate([
             'nama_ortu' => 'required|string',
             'username' => 'required|string',
+            'password' => 'required|min:6|confirmed',
         ]);
 
         try {
             User::create([
                 'nama' => $this->nama_ortu,
                 'username' => $this->username,
-                'password' => bcrypt($this->username),
+                'password' => bcrypt($this->password),
                 'role' => 'user',
                 'is_admin' => false,
             ]);

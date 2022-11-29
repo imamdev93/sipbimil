@@ -28,6 +28,16 @@ class GiziBalitaCreate extends Component
         }
     }
 
+    public function deletePosyandu($id)
+    {
+        try {
+            Posyandu::find($id)->delete();
+            return redirect()->route('admin.gizi-balita.create')->with('success', 'Berhasil menghapus data');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
     public function store()
     {
         $this->validate([

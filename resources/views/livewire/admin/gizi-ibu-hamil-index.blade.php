@@ -3,6 +3,7 @@
         <div class="ibox-title">
             <h5>Daftar Gizi Ibu Hamil</h5>
             <div class="ibox-tools">
+                <a href="#" wire:click="export" class="btn btn-primary btn-sm">Export Laporan</a>
                 <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
         </div>
@@ -45,38 +46,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(count($bumil) > 0)
-                    @foreach ($bumil as $row)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $row->ibuhamil->user->nama ?? '-' }}</td>
-                        <td>{{ $row->tinggi_badan ?? '-' }}</td>
-                        <td>{{ $row->berat_badan ?? '-' }}</td>
-                        <td>{{ $row->tanggal_pengukuran ?? '-' }}</td>
-                        <td>{{ $row->status ?? '-' }}</td>
-                        <td>{{ $row->hasil ?? '-' }}</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-secondary" wire:click="show({{ $row->id }})"
-                                data-toggle="modal" data-target="#show"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.gizi-ibu-hamil.edit', $row->id)}}"><i
-                                    class="fa fa-edit"></i></a>
-                            <button class="btn btn-sm btn-danger" wire:click="show({{ $row->id }})" data-toggle="modal"
-                                data-target="#hapus"><i class="fa fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @if (count($bumil) > 0)
+                        @foreach ($bumil as $row)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $row->ibuhamil->user->nama ?? '-' }}</td>
+                                <td>{{ $row->tinggi_badan ?? '-' }}</td>
+                                <td>{{ $row->berat_badan ?? '-' }}</td>
+                                <td>{{ $row->tanggal_pengukuran ?? '-' }}</td>
+                                <td>{{ $row->status ?? '-' }}</td>
+                                <td>{{ $row->hasil ?? '-' }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-secondary"
+                                        wire:click="show({{ $row->id }})" data-toggle="modal"
+                                        data-target="#show"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-primary"
+                                        href="{{ route('admin.gizi-ibu-hamil.edit', $row->id) }}"><i
+                                            class="fa fa-edit"></i></a>
+                                    <button class="btn btn-sm btn-danger" wire:click="show({{ $row->id }})"
+                                        data-toggle="modal" data-target="#hapus"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
                     @else
-                    <tr>
-                        <td colspan="10" class="text-center">Data tidak ditemukan</td>
-                    </tr>
+                        <tr>
+                            <td colspan="10" class="text-center">Data tidak ditemukan</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>
             {{ $bumil->links() }}
         </div>
     </div>
-    <div wire:ignore.self class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="show" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

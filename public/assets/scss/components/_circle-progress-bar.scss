@@ -1,0 +1,127 @@
+/*********************************
+* Component - Circle Progress Bar
+**********************************/
+
+
+.progress-circle canvas {
+  vertical-align: top;
+  transform: rotate(90deg);
+}
+
+.circle-single-progress-bar {
+  text-align: center;
+
+  .outer-text{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  & .radial-progress {
+    height: auto;
+    max-width: 193px;
+    transform: rotate(-90deg);
+    width: 100%;
+
+    & circle {
+      fill: rgba(0,0,0,0);
+      stroke: #fff;
+      stroke-dashoffset: 219.91148575129; 
+      stroke-width: 5;
+
+      &.complete {
+        stroke-dasharray: 219.91148575129; 
+      }
+    }
+    & text {
+      fill: #fff;
+      text-anchor: middle;
+      font-size: 19px;
+      font-family: $heading-font;
+      font-weight: 600;
+    }
+  }
+
+  &.orange{
+    & .radial-progress {
+      & circle {
+        &.complete {
+          stroke: #ffb40c;
+        }
+      }
+      & text {
+        fill: #ffb40c;
+      }
+    }
+  }
+
+  &.cyan{
+    & .radial-progress {
+      & circle {
+        &.complete {
+          stroke: #00b8a9;
+        }
+      }
+      & text {
+        fill: #00b8a9;
+      }
+    }
+  }
+
+  &.blue{
+    & .radial-progress {
+      & circle {
+        &.complete {
+          stroke: #3232ac;
+        }
+      }
+      & text {
+        fill: #3232ac;
+      }
+    }
+  }
+
+  &.pink{
+    & .radial-progress {
+      & circle {
+        &.complete {
+          stroke: #ffb999;
+        }
+      }
+      & text {
+        fill: #ffb999;
+      }
+    }
+  }
+
+
+
+}
+
+.progress-circle{
+	position: relative;
+	text-align: center;
+	.counter-inner-text{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 38px;
+		font-family: $heading-font;
+		font-weight: 600;
+
+    &-orange{
+      color: #ffb40c;
+    }
+    &-cyan{
+      color: #00b8a9;
+    }
+    &-blue{
+      color: #3232ac;
+    }
+    &-pink{
+      color: #ffb999;
+    }
+	}
+}

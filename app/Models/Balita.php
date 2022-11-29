@@ -44,9 +44,12 @@ class Balita extends Model
         unset($data['nama_posyandu']);
         unset($data['action']);
         try {
+            // ubah atau simpan data gizi balita
             GiziBalita::updateOrCreate([
                 'id' => $id
             ], $data);
+
+            self::getBalita($data)->update(['status' => $data['status']]); // update status balita
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }

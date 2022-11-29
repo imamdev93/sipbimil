@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Exports\GiziIbuHamilExport;
 use App\Models\GiziIbuHamil;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Excel;
 
 class GiziIbuHamilIndex extends Component
 {
@@ -32,6 +34,28 @@ class GiziIbuHamilIndex extends Component
     public function show($id)
     {
         $this->data = GiziIbuHamil::findOrFail($id);
+    }
+
+    public function export()
+    {
+        $data = GiziIbuHamil::select(
+            'ibu_hamil.tanggal_lahir',
+            'users.nama as nama',
+            'ibu_hamil.alamat',
+            'posyandu.nama as nama_posyandu',
+            'ibu_hamil.rt',
+            'ibu_hamil.rw',
+            'gizi_ibu_hamil.tanggal_pengukuran',
+            'gizi_ibu_hamil.berat_badan',
+            'gizi_ibu_hamil.tinggi_badan',
+            'gizi_ibu_hamil.status',
+            'gizi_ibu_hamil.hasil',
+        )
+            ->leftjoin('ibu_hamil', 'ibu_hamil.id', 'gizi_ibu_hamil.ibu_hamil_id')
+            ->leftjoin('users', 'users.id', 'ibu_hamil.user_id')
+            ->leftjoin('posyandu', 'posyandu.id', 'gizi_ibu_hamil.posyandu_id')
+            ->get();
+        return Excel::download(new GiziIbuHamilExport($data), 'data-gizi-ibu-hamil-' . date('YmdHis') . '.xlsx');
     }
 
     public function delete()

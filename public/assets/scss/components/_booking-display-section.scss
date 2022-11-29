@@ -1,0 +1,161 @@
+/*****************************
+* Component - Booking Display
+*****************************/
+.book-form {
+  background: $themeColor;
+
+  .title {
+    font-size: 25px;
+    color: $white;
+    font-weight: 600;
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    line-height: 1.45;
+    @include breakpoint(small) {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    @include breakpoint(medium) {
+      font-size: 30px;
+    }
+    @include breakpoint(large) {
+      font-size: 34px;
+    }
+    @include breakpoint(xlarge) {
+      font-size: 39px;
+    }
+
+    span {
+      display: block;
+      font-weight: 300;
+    }
+  }
+
+  input,
+  textarea {
+    background: transparent;
+    color: $white;
+    transition: $baseTransition;
+
+    &:focus {
+      border-color: $colorOrange;
+    }
+  }
+
+  .submit-btn{
+    margin-top: 25px;
+  }
+
+  &-1 {
+    width: 100%;
+    padding: 90px 30px 80px;
+    border-radius: 35px;
+    margin-top: 50px;
+    width: 100%;
+    @include breakpoint(small) {
+      border-radius: 50px;
+    }
+    // @include breakpoint(medium) {
+    //   padding: 110px 30px 100px;
+    // }
+    @include breakpoint(large) {
+      width: calc(60% - 80px);
+      margin-top: 0;
+      padding: 65px 45px 60px;
+    }
+    @include breakpoint(xxlarge) {
+      width: calc(50% - 110px);
+      padding: 65px 50px 60px;
+    }
+    @include breakpoint(xxxlarge) {
+      width: calc(50% - 135px);
+      // padding: 80px 90px;
+    }
+
+    &.mr-135 {
+      @include breakpoint(medium) {
+        margin-right: 50px;
+      }
+      @include breakpoint(large) {
+        margin-right: 80px;
+      }
+      @include breakpoint(xxlarge) {
+        margin-right: 110px;
+      }
+      @include breakpoint(xxxlarge) {
+        margin-right: 135px;
+      }
+    }
+
+    &.ml-135 {
+      @include breakpoint(medium) {
+        margin-left: 50px;
+      }
+      @include breakpoint(large) {
+        margin-left: 80px;
+      }
+      @include breakpoint(xxlarge) {
+        margin-left: 110px;
+      }
+      @include breakpoint(xxxlarge) {
+        margin-left: 135px;
+      }
+    }
+  }
+
+  &-2 {
+    padding: 50px 30px 40px;
+    border-radius: 30px;
+    @include breakpoint(xlarge) {
+      padding: 50px;
+    }
+  }
+
+  &-3 {
+
+    width: 100%;
+    padding: 30px;
+    border-radius: 35px;
+    margin-top: 60px;
+    width: 100%;
+    background: $colorGray-2;
+    @include breakpoint(small) {
+      border-radius: 50px;
+      padding: 70px;
+    }
+    @include breakpoint(medium) {
+      padding: 80px 80px 80px;
+    }
+    @include breakpoint(xlarge) {
+      width: 50%;
+    }
+    @include breakpoint(xxlarge) {
+      position: absolute;
+      width: 570px;
+      left: calc(50% - 83px);
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 0;
+    }
+
+
+    .title {
+      color: $colorDarkBlue;
+
+      span {
+        color: #58575f;
+      }
+    }
+  }
+}
+
+.book-image {
+  max-width: 100%;
+  @include breakpoint(large) {
+    width: 40%;
+  }
+  @include breakpoint(xlarge) {
+    width: 50%;
+  }
+}

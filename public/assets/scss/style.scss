@@ -1,0 +1,79 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Coloxa
+    Template Description: Coloxa - Pregnancy Care Medical Bootstrap 5 Template
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+    -> Base - Default
+
+    -> Component - Hero Display
+    -> Component - Service Display
+    -> Component - Experience Display
+    -> Component - About Display
+    -> Component - Circle Progress Bar
+    -> Component - Booking Display
+    -> Component - Cases Display
+    -> Component - Doctors Cases  Display
+    -> Component - Support  Display
+    -> Component - Company Logo Slider
+    -> Component - Testimonial Display
+    -> Component - Blog Feed Display
+    -> Component - Contact Banner Display
+    -> Component - Breadcrumb
+    -> Component - Sidebar Widgets
+    -> Component - Pagination
+    
+
+    -> Pages - FAQ
+    -> Pages - 404 Error
+    -> Pages - Blogs
+    -> Pages - Contact
+
+
+    -> Layout - Header
+    -> Layout - Footer
+
+
+
+-----------------------------------------------------------------------------------*/
+@import "base/mixins";
+@import "base/variables";
+@import "base/common";
+
+/*Component*/
+@import "components/hero-slider";
+@import "components/service-display";
+@import "components/experience-display";
+@import "components/about-display";
+@import "components/circle-progress-bar";
+@import "components/booking-display-section";
+@import "components/cases-display";
+@import "components/doctors-team-display";
+@import "components/support-display";
+@import "components/company-logo-slider";
+@import "components/testimonial-display";
+@import "components/blog-feed-display";
+@import "components/contact-banner-display";
+@import "components/breadcrumb";
+@import "components/sidebar-widget";
+@import "components/pagination";
+
+
+/*Layout*/
+@import "pages/faq";
+@import "pages/error";
+@import "pages/blog";
+@import "pages/contact";
+
+
+/*Layout*/
+@import "layout/header";
+@import "layout/footer";
+
+
+@import "base/material-scroll-top";

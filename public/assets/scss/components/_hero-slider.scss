@@ -1,0 +1,279 @@
+/*****************************
+* Component - Hero Display
+*****************************/
+
+
+/*Hero Background*/
+.hero-bg{
+    background: $themeColor;
+    z-index: 1;
+    position: relative;
+}
+
+.hero-display{
+    .box-wrapper{
+        padding: 170px 0;
+        position: relative;
+        overflow: hidden;
+
+        @include breakpoint(xlarge){
+            padding: 250px 0;
+        }
+        @include breakpoint(xxlarge){
+            padding: 280px 0;
+        }
+        @include breakpoint(xxxlarge){
+            padding: 330px 0;
+        }
+
+
+        .hero-image-1,
+        .hero-image-2{
+            position: relative;
+            z-index: -1;
+            img{
+                max-width: 100%;
+            }
+
+            @include breakpoint(xxxlarge){
+                position: absolute;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+        .hero-image-1{
+            margin-bottom: 40px;
+            @include breakpoint (xxxlarge){
+                margin-bottom: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+
+        }
+
+        .hero-image-2{
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            img{
+                width: 100px;
+            }
+            @include breakpoint(xlarge){
+                bottom: 0;
+                left: 60px;
+
+                img{
+                    width: 190px;
+                }
+            }
+            @include breakpoint(xxxlarge){
+                img{
+                    width: auto;
+                }
+            }
+
+        }
+
+
+        .social-link{
+            background: rgba($white, .05);
+            padding: 20px 20px;
+            position: absolute;
+            bottom: 40px;
+            right: 0;
+            border-radius: 70px 0 0 70px;
+            @include breakpoint(xxlarge){
+                padding: 40px 50px;
+            }
+            a{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                color: $white;
+                border: 1px solid $white;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 15px;
+                transition: $baseTransition;
+
+                @include breakpoint(xxlarge){
+                    width: 55px;
+                    height: 55px;
+                    line-height: 55px;
+                    margin-right: 25px;
+                }
+                &:hover{
+                    border-color: $colorOrange;
+                    color: $colorOrange;
+                }
+            }
+        }
+
+
+        .hero-shape{
+            position: absolute;
+        }
+
+        .hero-shape-outline{
+            border-radius: 50%;
+            border: 1px solid rgba($white, .1);
+
+            height: 768px;
+            width: 768px;
+
+            @include breakpoint(xxxlarge){
+                height: 973px;
+                width: 973px;
+            }
+
+        }
+
+        .hero-shape-outline-1{
+            top: -457px;
+            left: -588px;
+            @include breakpoint(xlarge){
+                top: -273px;
+                left: -340px;
+            }
+            @include breakpoint(xxlarge){
+                top: -193px;
+                left: -340px;
+            }
+            @include breakpoint(xxxlarge){
+                top: -373px;
+                left: -183px;
+            }
+
+        }
+
+        .hero-shape-outline-2{
+            top: -120px;
+            left: -700px;
+
+            @include breakpoint(xlarge){
+                top: -90px;
+                left: -645px;
+            }
+            @include breakpoint(xxlarge){
+                top: -30px;
+                left: -650px;
+            }
+            @include breakpoint(xxxlarge){
+                top: -120px;
+                left: -788px;
+            }
+
+        }
+
+
+        .hero-shape-fill {
+            border-radius: 50%;
+            background: rgba($white, .05);
+        }
+
+        .hero-shape-fill-1{
+            height: 60px;
+            width: 60px;
+            left: 5px;
+            top: 455px;
+
+            @include breakpoint(small){
+                height: 80px;
+                width: 80px;
+                left: 20px;
+                top: 580px;
+            }
+            @include breakpoint(medium){
+                height: 100px;
+                width: 100px;
+                left: 20px;
+                top: 145px;
+            }
+            @include breakpoint(xlarge){
+                height: 127px;
+                width: 127px;
+                left: 10px;
+                top: 244px;
+            }
+            @include breakpoint(xxlarge){
+                left: 75px;
+                top: 268px;
+            }
+            @include breakpoint(xxxlarge){
+                left: 334px;
+                top: 300px;
+            }
+
+        }
+
+        .hero-shape-fill-2{
+            height: 320px;
+            width: 320px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 40px;
+
+            @include breakpoint(medium){
+                height: 500px;
+                width: 500px;
+                left: initial;
+                transform: translateX(0%);
+                right: 20px;
+                top: -100px;
+            }
+            @include breakpoint(xxxlarge){
+                height: 912px;
+                width: 912px;
+                right: 100px;
+                top: -252px;
+            }
+
+        }
+    }
+
+}
+
+/*Hero Content*/
+.hero-content{
+    z-index: 9;
+    position: relative;
+    .title{
+        font-size: 40px;
+        font-weight: 600;
+        color: $white;
+
+        &.highlight{
+            color: $colorOrange;
+            font-weight: 400;
+        }
+
+        @include breakpoint(medium){
+            font-size: 45px;
+        }
+        @include breakpoint(large){
+            font-size: 60px;
+        }
+        @include breakpoint(xxxlarge){
+            font-size: 68px;
+        }
+    }
+
+    p{
+        margin-top: 30px;
+        color: $white;
+        font-size: 17px;
+        line-height: 2;
+
+        @include breakpoint(xxxlarge){
+            margin-top: 40px;
+        }
+    }
+
+    .btn{
+        margin-top: 25px;
+    }
+}

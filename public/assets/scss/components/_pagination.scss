@@ -1,0 +1,34 @@
+/************************************
+* Component - Pagination
+*************************************/
+
+.pagination-list{
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+
+  li{
+    margin-right: 15px;
+    &:last-child{margin-right: 0;}
+
+    &.active a{
+      border-color: $themeColor;
+      background: $themeColor;
+      color: $white;
+    }
+  }
+
+  a{
+    display: inline-block;
+    border: 1px solid rgba($themeColor, 1);
+    border-radius: 10px;
+    color: $colorDarkBlue;
+    padding: 10px 20px;
+    transition: $baseTransition;
+    &:hover{
+      border-color: $themeColor;
+      background: $themeColor;
+      color: $white;
+    }
+  }
+}

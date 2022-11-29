@@ -1,0 +1,165 @@
+/*****************************
+* Component - Experience Display
+*****************************/
+
+/*Experience Display List*/
+.experience-display-list{
+    background: $white;
+    border-radius: 25px;
+    margin-top: 60px;
+    padding: 35px 30px;
+    @include breakpoint(small){
+        padding: 55px 50px;
+    }
+    @include breakpoint(large){
+        margin-top: 0;
+    }
+    @include breakpoint(xxxlarge){
+        padding: 85px 80px;
+    }
+
+
+    .top-content{
+      text-align: center;
+      margin-bottom: 20px;
+      @include breakpoint(xlarge){
+        margin-bottom: 50px;
+      }
+      span{
+        display: block;
+        line-height: 1;
+        font-family: $heading-font;
+
+      }
+      .number{
+        font-size: 48px;
+        font-weight: 600;
+        color: $themeColor;
+        margin-bottom: 10px;
+        @include breakpoint(large){
+          font-size: 65px;
+          margin-bottom: 30px;
+        }
+      }
+
+      .text{
+        font-size: 25px;
+      }
+    }
+
+    .list-item{
+        li{
+            background: $colorGray;
+            border-radius: 10px;
+            padding: 25px 30px;
+            position: relative;
+            transition: $baseTransition;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            font-family: $heading-font;
+            font-weight: 500;
+            
+
+            @include breakpoint(small){
+                padding: 20px 45px;
+                
+            }
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .text{
+                display: inline-block;
+                transition: $baseTransition;
+                color: $colorDarkBlue;
+                padding-left: 55px;
+                font-size: 18px;
+                @include breakpoint(small){
+                    padding-left: 85px;
+                    font-size: 25px;
+                }
+
+              &::before{
+                position: absolute;
+                content: "\ea7c";
+                font-family: 'IcoFont';
+                right: 35px;
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                background: $white;
+                color: $themeColor;
+                border-radius: 50%;
+                visibility: visible;
+                opacity: 1;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: $baseTransition;
+                text-align: center;
+                font-size: 18px;
+                @include breakpoint(small){
+                  right: 55px;
+                  width: 55px;
+                  height: 55px;
+                  line-height: 55px;
+                  left: 30px;
+                }
+              }
+
+                &::after{
+                    position: absolute;
+                    content: "\ea7c";
+                    font-family: 'IcoFont';
+                    right: 35px;
+                    width: 35px;
+                    height: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    border-radius: 50%;
+                    border: 2px solid $white;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: $baseTransition;
+                    color: $white;
+                    display: inline-block;
+                    transform: translateY(-50%) translateX(45px);
+                    top: 50%;
+                    font-size: 18px;
+
+                    @include breakpoint(small){
+                        right: 55px;
+                        width: 55px;
+                        height: 55px;
+                        line-height: 55px;
+                    }
+                }
+            }
+
+            &:hover{
+                background: $themeColor;
+                color: $white;
+                .text{
+                    padding-left: 0px;
+                    color: $white;
+                    &::before{
+                        left: 0;
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+                    &::after{
+                        visibility: visible;
+                        opacity: 1;
+                        right: 75px;
+                        @include breakpoint(small){
+                         right: 85px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

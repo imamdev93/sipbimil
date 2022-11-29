@@ -1,0 +1,140 @@
+/*****************************
+* Component - Service Display
+*****************************/
+
+
+/*Service Display List*/
+.service-display-list{
+    background: $white;
+    border-radius: 25px;
+    margin-top: 60px;
+    @include breakpoint(large){
+        margin-top: 0;
+    }
+    .list-item{
+        padding: 30px 25px;
+        @include breakpoint(small){
+            padding: 55px 40px;
+        }
+        @include breakpoint(xxxlarge){
+            padding: 85px 80px;
+        }
+        li{
+            background: $colorGray;
+            border-radius: 10px;
+            padding: 25px 30px;
+            position: relative;
+            transition: $baseTransition;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+
+            @include breakpoint(small){
+                padding: 26px 45px;
+            }
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .icon-image{
+                position: absolute;
+                height: 60px;
+                width: 60px;
+                background: $white;
+                border-radius: 50%;
+                visibility: visible;
+                opacity: 1;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: $baseTransition;
+                text-align: center;
+                line-height: 60px;
+                @include breakpoint(small){
+                    height: 70px;
+                    width: 70px;
+                    line-height: 70px;
+                    left: 30px;
+                }
+                img{
+                   max-width: 100%;
+                }
+            }
+
+            a{
+                font-size: 18px;
+                font-family: $heading-font;
+                font-weight: 500;
+
+                @include breakpoint(small){
+                    font-size: 25px;
+                }
+            }
+
+            .text{
+                display: inline-block;
+                transition: $baseTransition;
+                padding-left: 55px;
+                color: $colorDarkBlue;
+                @include breakpoint(small){
+                    padding-left: 85px;
+                }
+                &::after{
+                    position: absolute;
+                    content: "\ea7c";
+                    font-family: 'IcoFont';
+                    font-size: 18px;
+                    right: 35px;
+                    width: 35px;
+                    height: 35px;
+                    line-height: 33px;
+                    text-align: center;
+                    border-radius: 50%;
+                    border: 2px solid $white;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: $baseTransition;
+                    color: $white;
+                    display: inline-block;
+                    transform: translateY(-50%) translateX(45px);
+                    top: 50%;
+
+                    @include breakpoint(small){
+                        right: 55px;
+                        width: 55px;
+                        height: 55px;
+                        line-height: 53px;
+                    }
+                }
+            }
+
+            &:hover{
+                background: $themeColor;
+                .icon-image{
+                    left: 0;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+
+                a{
+                    color: $white;
+                }
+
+                .text{
+                    padding-left: 0px;
+                    color: $white;
+                    &::after{
+                        visibility: visible;
+                        opacity: 1;
+                        right: 75px;
+                        @include breakpoint(small){
+                         right: 85px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -21,13 +21,5 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'is_admin' => true,
         ]);
-
-        DB::table('users')->insert([
-            'nama' => 'Operator',
-            'username' => 'operator',
-            'password' => bcrypt('operator'),
-            'role' => 'operator',
-            'is_admin' => true,
-        ]);
     }
 }

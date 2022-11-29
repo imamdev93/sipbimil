@@ -1,0 +1,156 @@
+/************************************
+* Pages - Contact
+*************************************/
+
+.contact-box-wrapper{
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  padding: 80px 20px;
+  @include breakpoint(large){
+    padding: 100px 30px;
+  }
+  @include breakpoint(xlarge){
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  @include breakpoint(xxlarge){
+    padding: 0;
+  }
+
+}
+
+.map-box{
+  width: 100%;
+  iframe{
+    width: 100%;
+    height: 360px;
+  }
+  @include breakpoint(small){
+    iframe{
+      height: 480px;
+    }
+  }
+  @include breakpoint(medium){
+    iframe{
+      height: 500px;
+    }
+  }
+  @include breakpoint(large){
+    iframe{
+      height: 600px;
+    }
+  }
+  @include breakpoint(xxlarge){
+    width: 100%;
+    width: 50%;
+    iframe{
+      height: 1220px;
+    }
+  }
+
+}
+.contact-info{
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(small){
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  @include breakpoint(xlarge){
+    width: calc(50% - 100px);
+    flex-direction: column;
+    margin-right: 100px;
+  }
+  @include breakpoint(xxlarge){
+    flex-direction: column;
+    width: calc(50% - 340px);
+    margin-left: 300px;
+    margin-right: 40px;
+  }
+  @include breakpoint(xxxlarge){
+    flex-direction: column;
+    width: calc(50% - 675px);
+    margin-left: 300px;
+    margin-right: 375px;
+  }
+}
+.contact-info-single-item{
+
+  margin-bottom: 50px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  @include breakpoint(small){
+    margin-bottom: 0
+  }
+  @include breakpoint(xlarge){
+    margin-bottom: 50px;
+  }
+
+  .title{
+    font-size: 36px;
+    color: $colorDarkBlue;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  .social-link-2{
+    li:nth-child(1) > a{
+      color: #3232ac;
+    }
+    li:nth-child(2) > a{
+      color: #00b8a9;
+    }
+    li:nth-child(3) > a{
+      color: #ff5400;
+    }
+    a{
+      font-weight: 600;
+      border-color: #ebeaf1;
+      .icon{
+        &::after{
+          background: #ebeaf1;
+        }
+      }
+      &:hover{
+        border-color: #ebeaf1;
+        .icon{
+          &::after{
+            background: #ebeaf1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-address{
+  border-top: 1px solid #ebeaf1;
+  border-bottom: 1px solid #ebeaf1;
+  padding: 35px 0;
+}
+
+.contact-address-single-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .icon {
+    color: $themeColor;
+  }
+
+  .text {
+    color: $bodyColor;
+    margin-left: 30px;
+  }
+}

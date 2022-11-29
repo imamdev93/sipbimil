@@ -1,0 +1,177 @@
+/************************************
+* Component - Doctors Cases  Display
+*************************************/
+
+
+.doctor-shape {
+  position: absolute;
+  width: 971px;
+  height: 971px;
+  border: 1px solid rgba($colorDarkBlue, .08);
+  border-radius: 50%;
+  background: transparent;
+  display: none;
+
+  @include breakpoint(large) {
+    display: block;
+  }
+
+  &-1 {
+    top: -631px;
+    left: -471px;
+
+    @include breakpoint(large) {
+      top: -731px;
+      left: -671px;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -731px;
+      left: -671px;
+    }
+
+    @include breakpoint(xxlarge) {
+      top: -731px;
+      left: -571px;
+    }
+
+    @include breakpoint(xxxlarge) {
+      top: -631px;
+      left: -471px;
+    }
+  }
+
+  &-2 {
+
+    @include breakpoint(large) {
+      top: -646px;
+      left: -641px;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -646px;
+      left: -641px;
+    }
+
+    @include breakpoint(xxlarge) {
+      top: -546px;
+      left: -541px;
+    }
+
+    @include breakpoint(xxxlarge) {
+      top: -446px;
+      left: -441px;
+    }
+  }
+
+  &-3 {
+    top: -631px;
+    right: -471px;
+
+    @include breakpoint(large) {
+      top: -731px;
+      right: -671px;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -731px;
+      right: -671px;
+    }
+
+    @include breakpoint(xxlarge) {
+      top: -731px;
+      right: -571px;
+    }
+
+    @include breakpoint(xxxlarge) {
+      top: -631px;
+      right: -471px;
+    }
+  }
+
+  &-4 {
+
+    @include breakpoint(large) {
+      top: -646px;
+      right: -641px;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -646px;
+      right: -641px;
+    }
+
+    @include breakpoint(xxlarge) {
+      top: -546px;
+      right: -541px;
+    }
+
+    @include breakpoint(xxxlarge) {
+      top: -446px;
+      right: -441px;
+    }
+  }
+
+}
+
+
+
+.doctors-team-slider {
+  .swiper-button-prev {
+    left: 0;
+    display: none;
+
+    @include breakpoint(xxlarge) {
+      display: flex;
+      left: -60px;
+    }
+
+    &::after {
+      content: "\eab5";
+    }
+  }
+
+  .swiper-button-next {
+    right: 0;
+    display: none;
+
+    @include breakpoint(xxlarge) {
+      display: flex;
+      right: -60px;
+    }
+
+    &::after {
+      content: "\eab8";
+    }
+  }
+}
+
+.doctors-team-single-item {
+  .image {
+    overflow: hidden;
+    border-radius: 25px;
+  }
+
+  .content {
+    .name {
+      margin-top: 30px;
+      font-size: 25px;
+      font-weight: 600;
+      a{
+        color: $colorDarkBlue;
+      }
+    }
+
+    .profession {
+      margin-top: 15px;
+      font-size: 15px;
+      font-family: $body-font;
+      font-weight: 400;
+    }
+  }
+  &:hover{
+    .name a{
+      color: $themeColor;
+    }
+  }
+}

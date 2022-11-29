@@ -1,0 +1,233 @@
+/************************************
+* Component - Testimonial Display
+*************************************/
+
+.testimonial-display-section-custome-margin-top {
+  margin-top: 80px;
+  @include breakpoint(medium){
+      margin-top: 100px;
+  }
+  @include breakpoint(large){
+      margin-top: 125px;
+  }
+  @include breakpoint(xlarge){
+      margin-top: 650px;
+  }
+  @include breakpoint(xxlarge){
+      margin-top: 590px;
+  }
+}
+
+/*Testmonilal Slider Style - 1*/
+.tesimonial-slider-single-item-style-1 {
+  padding-left: 3px;
+  padding-right: 3px;
+  @include breakpoint(medium) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @include breakpoint(xxxlarge) {
+    padding-left: 22.5px;
+    padding-right: 22.5px;
+  }
+  .testimonial-box {
+    border-radius: 30px;
+    padding: 45px 30px 50px 65px;
+    background: #f5f5fc;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: 40px;
+    transition: $baseTransition;
+
+    @include breakpoint(xxxlarge) {
+      padding: 45px 30px 50px 90px;
+    }
+
+    .image {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      overflow: hidden;
+      top: 40px;
+      left: calc(0% - 40px);
+      box-shadow: 0 0 5px rgba(#0a015f, .2);
+      border-radius: 50%;
+      transition: $baseTransition;
+      background: $white;
+      border: 4px solid $white;
+
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+
+    .content {
+
+      p {
+        font-family: $heading-font;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.75;
+        position: relative;
+        display: block;
+        transition: $baseTransition;
+
+        &::after {
+          position: absolute;
+          content: "";
+          background: url("../images/icons/testimonial-quote-icon.svg");
+          width: 90px;
+          height: 65px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .name {
+        margin-top: 15px;
+        font-size: 23px;
+        font-weight: 600;
+        transition: $baseTransition;
+        color: $colorDarkBlue;
+        text-transform: capitalize;
+      }
+
+      .profession {
+        margin-top: 15px;
+        font-family: $body-font;
+        font-weight: 400;
+        transition: $baseTransition;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+    }
+
+    &:hover {
+      background: $themeColor;
+
+      p {
+        color: $white;
+      }
+
+      .name {
+        color: $white;
+      }
+
+      .profession {
+        color: #ffa80d;
+      }
+    }
+  }
+}
+
+
+/*Testmonilal Slider Style - 2*/
+.testimonial-slider-style-2{
+  position: relative;
+    .swiper-pagination{
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 70px;
+      @include breakpoint(medium){
+          bottom: -40px;
+      }
+      @include breakpoint(xlarge){
+          bottom: 70px;
+      }
+      .swiper-pagination-bullet{
+        height: 10px;
+        width: 10px;
+        outline: none;
+        margin-right: 10px;
+        &:last-child{
+          margin-right: 10px
+        }
+
+        &-active{
+          background: $themeColor;
+        }
+      }
+    }
+}
+.tesimonial-slider-single-item-style-2 {
+
+  .testimonial-box {
+    padding: 100px 40px 140px;
+    border-radius: 30px;
+    background: #f5f5fc;
+    text-align: center;
+    transition: $baseTransition;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    @include breakpoint(medium){
+      padding: 60px 40px 60px;
+    }
+    @include breakpoint(xlarge){
+      padding: 100px 40px 140px;
+    }
+    .image {
+      width: 90px;
+      height: 90px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(#0a015f, .2);
+      border-radius: 50%;
+      transition: $baseTransition;
+      background: $white;
+      text-align: center;
+      margin-bottom: 27px;
+      border: 4px solid $white;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+
+    .content {
+      margin-top: 20px;
+      p {
+        font-family: $heading-font;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.75;
+        position: relative;
+        display: block;
+        transition: $baseTransition;
+
+        &::after {
+          position: absolute;
+          content: "";
+          background: url("../images/icons/testimonial-quote-icon.svg");
+          width: 90px;
+          height: 65px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .name {
+        margin-top: 15px;
+        font-size: 23px;
+        font-weight: 600;
+        color: $colorDarkBlue;
+        text-transform: capitalize;
+      }
+
+      .profession {
+        margin-top: 15px;
+        font-family: $body-font;
+        font-weight: 400;
+        color: $themeColor;
+        text-transform: capitalize;
+      }
+    }
+  }
+}
