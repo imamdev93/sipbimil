@@ -90,8 +90,9 @@
                                                 <text class="percentage" x="50%" y="57%"
                                                     transform="matrix(0, 1, -1, 0, 80, 0)">{{ $bumil->total }}</text>
                                             </svg>
-                                            <span class="outer-text">Ibu
-                                                Hamil {{ $bumil->status ?? 'Gizi Belum diketahui' }}</span>
+                                            <span class="outer-text">
+                                                {{ $bumil->status ? 'Ibu Hamil ' . $bumil->status : 'Gizi Ibu Hamil Belum diketahui' }}
+                                            </span>
                                         </div>
                                         <!-- End Progress Bar Single Item-->
 
@@ -113,8 +114,8 @@
                                                     transform="matrix(0, 1, -1, 0, 80, 0)">
                                                     {{ $balita->total }}</text>
                                             </svg>
-                                            <span class="outer-text">Balita
-                                                {{ $balita->status ?? 'Gizi Belum diketahui' }}</span>
+                                            <span class="outer-text">
+                                                {{ $balita->status ? 'Balita ' . $balita->status : 'Gizi Balita Belum diketahui' }}</span>
                                         </div>
                                         <!-- End Progress Bar Single Item-->
 
