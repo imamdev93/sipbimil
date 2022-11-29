@@ -10,6 +10,7 @@ class GiziIbuHamil extends Model
     use HasFactory;
 
     protected $table = 'gizi_ibu_hamil';
+    public $primaryKey = 'id';
     public $guarded = [];
 
     public function ibuhamil()

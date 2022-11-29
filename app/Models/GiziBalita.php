@@ -10,6 +10,7 @@ class GiziBalita extends Model
     use HasFactory;
 
     protected $table = 'gizi_balita';
+    public $primaryKey = 'id';
     public $guarded = [];
 
     public function balita()
