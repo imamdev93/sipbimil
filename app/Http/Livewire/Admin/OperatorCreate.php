@@ -25,7 +25,8 @@ class OperatorCreate extends Component
                 'username' => $this->username,
                 'posyandu_id' => $this->posyandu_id,
                 'password' => bcrypt($this->password),
-                'role' => 'operator'
+                'role' => 'operator',
+                'is_admin' => true,
             ]);
             return redirect()->route('admin.operator.index')->with('success', 'Berhasil menambahkan data');
         } catch (\Throwable $th) {
