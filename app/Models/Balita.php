@@ -27,6 +27,8 @@ class Balita extends Model
             }
         });
     }
+
+    // fungsi untuk proses simpan data
     public static function storeProcess($data, $id = null)
     {
         $balita = self::getBalita($data);
@@ -60,6 +62,7 @@ class Balita extends Model
         return self::findOrFail($data['balita_id']);
     }
 
+    // fungsi untuk mengambil selisih usia balita
     public static function getUsia($balita, $data)
     {
         $date = Carbon::parse($data['tanggal_pengukuran']);
@@ -67,6 +70,7 @@ class Balita extends Model
         return $usia;
     }
 
+    //fungsi untuk mengambil data antropometri
     public static function getAntropometri($balita, $data, $kategori)
     {
         return AntropometriPenilaian::where('tinggi_badan', $data['tinggi_badan'])
@@ -75,6 +79,7 @@ class Balita extends Model
             ->first();
     }
 
+    // fungsi perhitungan data mencari status
     public static function formulaProcess($penilaian, $data)
     {
         $result = ($data['berat_badan'] - $penilaian->median) / ($penilaian->median - $penilaian->negatif_satu_sd);
@@ -88,6 +93,7 @@ class Balita extends Model
         ];
     }
 
+    // fungsi untuk menentukan status
     public static function getStatus($result, $penilaian)
     {
         $status = 'Obesitas';

@@ -15,6 +15,7 @@ class BalitaIndex extends Component
     public $search;
     public $data;
 
+    // fungsi untuk mengambil data balita
     public function getBalitaProperty()
     {
         return Balita::when($this->search, function ($query) {
@@ -25,11 +26,13 @@ class BalitaIndex extends Component
         })->paginate($this->perPage);
     }
 
+    //menampilkan data detail balita
     public function show($id)
     {
         $this->data = Balita::findOrFail($id);
     }
 
+    //fungsi untuk menghapus data
     public function delete()
     {
         try {
@@ -39,6 +42,8 @@ class BalitaIndex extends Component
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
+
+    //fungsi pertama menampilkan tampilan ketika component di load
     public function render()
     {
         return view('livewire.admin.balita-index', [

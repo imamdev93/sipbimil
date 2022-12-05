@@ -12,11 +12,13 @@ class IbuHamil extends Model
     protected $table = 'ibu_hamil';
     public $guarded = [];
 
+    // fungsi relasi ke tabel user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    //Proses simpan data untuk gizi ibu hamil
     public static function storeProcess($request, $id = null)
     {
         $result = self::formulaProcess($request);
@@ -33,6 +35,7 @@ class IbuHamil extends Model
         }
     }
 
+    // fungsi perhitungan data mencari status
     public static function formulaProcess($request)
     {
         $tinggi_badan = pow($request['tinggi_badan'] / 100, 2);
@@ -43,6 +46,7 @@ class IbuHamil extends Model
         ];
     }
 
+    // fungsi untuk menentukan status
     public static function getStatus($result)
     {
         $status = 'Obese II';

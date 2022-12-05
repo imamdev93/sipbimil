@@ -8,12 +8,15 @@ use Livewire\Component;
 
 class BalitaCreate extends Component
 {
+    // define attributes
     public $nama, $jenis_kelamin, $user_id, $alamat, $rt, $rw, $tanggal_lahir;
     public $nama_ortu, $username, $password, $password_confirmation;
     public $action = 'store';
 
+    //fungsi menyimpan data
     public function store()
     {
+        // validasi data
         $this->validate([
             'user_id' => 'required|exists:users,id',
             'nama' => 'required',
@@ -35,10 +38,12 @@ class BalitaCreate extends Component
             ]);
             return redirect()->route('admin.balita.index')->with('success', 'Berhasil menambahkan balita');
         } catch (\Throwable $th) {
+            // jika data gagal disimpan
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
 
+    //fungsi menyimpan data users
     public function storeOrtu()
     {
         $this->validate([

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Models\Balita;
-use App\Models\GiziBalita;
-use App\Models\GiziIbuHamil;
 use App\Models\IbuHamil;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,23 +11,26 @@ use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
+    // Menampilkan Halaman Beranda
     public function index()
     {
-        $data['totalIbuHamil'] = IbuHamil::count();
-        $data['totalBalita'] = Balita::count();
-        $data['totalBalitaByStatus'] = Balita::select('status', DB::raw('count(*) as total'))->groupBy('status')->get();
-        $data['totalIbuHamilByStatus'] = IbuHamil::select('status', DB::raw('count(*) as total'))->groupBy('status')->get();
+        $data['totalIbuHamil'] = IbuHamil::count(); //menghitung data ibu hamil
+        $data['totalBalita'] = Balita::count(); //menghitung data balita
+        $data['totalBalitaByStatus'] = Balita::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi balita berdasarkan status
+        $data['totalIbuHamilByStatus'] = IbuHamil::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi ibu hamil berdasarkan status
         return view('beranda', $data);
     }
 
+    // Redirect ke halaman login user
     public function login()
     {
-        if (auth()->guard('web')->check()) {
+        if (auth()->guard('web')->check()) { // pengecekan jika user sudah login
             return redirect()->route('dashboard');
         }
         return view('login');
     }
 
+    // fungsi untuk login user
     public function loginProcess(LoginRequest $request)
     {
         try {
@@ -42,9 +43,10 @@ class BerandaController extends Controller
         }
     }
 
+    // fungsi untuk menampilkan halaman monitoring berdasarkan user yang login
     public function dashboard(Request $request)
     {
-        $users = auth()->guard('web')->user();
+        $users = auth()->guard('web')->user(); // mengambil data user yang login
         $balita = $request->balita_id ?? $users->balitas->first()->id ?? null;
         $bumil = $users->bumil->id ?? null;
 
@@ -52,18 +54,19 @@ class BerandaController extends Controller
         $data['nama_balita'] = null;
         $data['bumil'] = null;
 
-        if ($balita) {
-            $data['balita'] = $this->getDataChart('balita', $balita);
+        if ($balita) { // pengecekan jika id balita tidak kosong
+            $data['balita'] = $this->getDataChart('balita', $balita); // mengambil data balita untuk chart
             $data['nama_balita'] = Balita::findOrFail($balita)->nama;
         }
 
-        if ($bumil) {
-            $data['bumil'] = $this->getDataChart('ibu_hamil', $bumil);
+        if ($bumil) { // pengecekan jika id ibu hamil tidak kosong
+            $data['bumil'] = $this->getDataChart('ibu_hamil', $bumil); // mengambil data ibu hamil untuk chart
         }
 
         return view('dashboard', $data);
     }
 
+    // fungsi untuk mengambil data untuk ditampilkan di chart
     public function getDataChart($label, $id)
     {
         $data = [];
@@ -86,6 +89,7 @@ class BerandaController extends Controller
         return $data;
     }
 
+    //fungsi untuk keluar dari aplikasi
     public function logout()
     {
         auth()->guard('web')->logout();
