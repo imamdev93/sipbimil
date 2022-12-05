@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    @if ($nama_balita)
+    @if ($nama_balita && count($balita) > 0)
         <div class="contact-banner-display-section section-top-gap-150">
             <div class="box-wrapper">
                 <div class="container">
@@ -105,7 +105,7 @@
         })
     </script>
     <script>
-        @if ($nama_balita)
+        @if ($nama_balita && count($balita) > 0)
             var options = {
                 series: [{
                     name: 'Hasil',
