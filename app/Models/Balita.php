@@ -41,7 +41,6 @@ class Balita extends Model
         if (($usia <= 24)) {
             $penilaian = self::getAntropometri($balita, $data, 1);
         }
-
         if (!$penilaian) {
             return $penilaian;
         }
@@ -53,6 +52,7 @@ class Balita extends Model
         unset($data['gizi_balita']);
         unset($data['nama_posyandu']);
         unset($data['action']);
+        unset($data['message']);
         try {
             // ubah atau simpan data gizi balita
             GiziBalita::updateOrCreate([
@@ -60,6 +60,7 @@ class Balita extends Model
             ], $data);
 
             self::getBalita($data)->update(['status' => $data['status']]); // update status balita
+            return true;
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }

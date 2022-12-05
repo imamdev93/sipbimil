@@ -10,7 +10,6 @@ class GiziIbuHamilCreate extends Component
 {
     public $ibu_hamil_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
     public $nama_posyandu;
-    public $message;
     public $action = 'store';
 
     public function storePosyandu()
@@ -41,8 +40,6 @@ class GiziIbuHamilCreate extends Component
 
     public function store()
     {
-        $this->message = false;
-
         $this->validate([
             'ibu_hamil_id' => 'required|exists:ibu_hamil,id',
             'posyandu_id' => 'nullable|exists:posyandu,id',
@@ -51,12 +48,8 @@ class GiziIbuHamilCreate extends Component
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {
-            $store = IbuHamil::storeProcess($this->all());
-            if (!$store) {
-                $this->message = 'Inputan tinggi badan tidak ditemukan di data antropometri.';
-            } else {
-                return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil menambahkan data');
-            }
+            IbuHamil::storeProcess($this->all());
+            return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil menambahkan data');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
