@@ -11,6 +11,7 @@ class GiziIbuHamilUpdate extends Component
     public $gizi_ibu_hamil;
     public $ibu_hamil_id, $posyandu_id, $tinggi_badan, $berat_badan, $tanggal_pengukuran;
     public $nama_posyandu;
+    public $message;
     public $action = 'update';
 
     public function mount($gizi_ibu_hamil)
@@ -27,6 +28,8 @@ class GiziIbuHamilUpdate extends Component
 
     public function update()
     {
+        $this->message = false;
+
         $this->validate([
             'ibu_hamil_id' => 'nullable|exists:ibu_hamil,id',
             'posyandu_id' => 'required|exists:posyandu,id',
@@ -35,8 +38,12 @@ class GiziIbuHamilUpdate extends Component
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {
-            IbuHamil::storeProcess($this->all(), $this->gizi_ibu_hamil->id);
-            return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil merubah data');
+            $store = IbuHamil::storeProcess($this->all(), $this->gizi_ibu_hamil->id);
+            if (!$store) {
+                $this->message = 'Inputan tinggi badan tidak ditemukan di data antropometri.';
+            } else {
+                return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil merubah data');
+            }
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

@@ -41,6 +41,11 @@ class Balita extends Model
         if (($usia <= 24)) {
             $penilaian = self::getAntropometri($balita, $data, 1);
         }
+
+        if (!$penilaian) {
+            return $penilaian;
+        }
+
         $result = self::formulaProcess($penilaian, $data);
 
         $data += $result;
