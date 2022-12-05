@@ -21,6 +21,9 @@ class IbuHamil extends Model
     //Proses simpan data untuk gizi ibu hamil
     public static function storeProcess($request, $id = null)
     {
+        $request['berat_badan'] = str_replace(',', '.', $request['berat_badan']);
+        $request['tinggi_badan'] = str_replace(',', '.', $request['tinggi_badan']);
+
         $result = self::formulaProcess($request);
         $request += $result;
         unset($request['nama_posyandu']);

@@ -43,8 +43,8 @@ class GiziIbuHamilCreate extends Component
         $this->validate([
             'ibu_hamil_id' => 'required|exists:ibu_hamil,id',
             'posyandu_id' => 'nullable|exists:posyandu,id',
-            'tinggi_badan' => 'required|numeric|between:0,200',
-            'berat_badan' => 'required|numeric|between:0,200',
+            'tinggi_badan' => 'required',
+            'berat_badan' => 'required',
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {

@@ -31,6 +31,9 @@ class Balita extends Model
     // fungsi untuk proses simpan data
     public static function storeProcess($data, $id = null)
     {
+        $data['berat_badan'] = str_replace(',', '.', $data['berat_badan']);
+        $data['tinggi_badan'] = str_replace(',', '.', $data['tinggi_badan']);
+
         $balita = self::getBalita($data);
         $usia = self::getUsia($balita, $data);
 

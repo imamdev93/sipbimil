@@ -30,8 +30,8 @@ class GiziIbuHamilUpdate extends Component
         $this->validate([
             'ibu_hamil_id' => 'nullable|exists:ibu_hamil,id',
             'posyandu_id' => 'required|exists:posyandu,id',
-            'tinggi_badan' => 'required|numeric|between:0,200',
-            'berat_badan' => 'required|numeric|between:0,200',
+            'tinggi_badan' => 'required',
+            'berat_badan' => 'required',
             'tanggal_pengukuran' => 'required|date',
         ]);
         try {
