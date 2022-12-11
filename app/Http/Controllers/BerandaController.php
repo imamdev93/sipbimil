@@ -34,10 +34,15 @@ class BerandaController extends Controller
     public function loginProcess(LoginRequest $request)
     {
         try {
-            if (!Auth::guard('web')->attempt($request->only('username', 'password'))) {
+            if (!Auth::guard($request->role)->attempt($request->only('username', 'password'))) {
                 return redirect()->route('login')->with('error', 'Gagal Login');
             }
-            return redirect()->route('dashboard')->with('success', 'Berhasil Login');
+
+            if ($request->role == 'web') {
+                return redirect()->route('dashboard')->with('success', 'Berhasil Login');
+            } else {
+                return redirect()->route('admin.dashboard')->with('success', 'Berhasil Login');
+            }
         } catch (\Throwable $th) {
             return redirect()->route('login')->with('error', $th->getMessage());
         }

@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function loginView()
     {
-        return view('admin.login');
+        return redirect()->route('login');
     }
 
     public function login(LoginRequest $request)
@@ -27,7 +27,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return redirect()->route('admin.loginView')->with('success', 'Berhasil Logout');
+        Auth::guard('admin')->logout();
+        return view('login');
     }
 }

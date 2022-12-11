@@ -28,6 +28,16 @@
                                         </div>
                                         <!-- End From Group SingleItem  -->
                                     </div>
+                                    <div class="col-12 mb-20">
+                                        <!-- Start From Group SingleI tem  -->
+                                        <div class="default-form-group-single-item border-white">
+                                            <select name="role" id="" class="form-control">
+                                                <option value="web">User</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                        <!-- End From Group SingleItem  -->
+                                    </div>
                                 </div>
                                 <div class="submit-btn text-center">
                                     <button type="submit" class="btn btn-lg btn-default btn-animate icon-space-left"><span>
