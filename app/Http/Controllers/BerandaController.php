@@ -26,6 +26,8 @@ class BerandaController extends Controller
     {
         if (auth()->guard('web')->check()) { // pengecekan jika user sudah login
             return redirect()->route('dashboard');
+        } elseif (auth()->guard('admin')->check()) { // pengecekan jika user sudah login
+            return redirect()->route('admin.dashboard');
         }
         return view('login');
     }
