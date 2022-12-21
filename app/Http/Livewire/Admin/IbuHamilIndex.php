@@ -18,7 +18,7 @@ class IbuHamilIndex extends Component
     public function getIbuhamilProperty()
     {
         return IbuHamil::when($this->search, function ($query) {
-            $query->orWhereHas('ibuhamil', function ($query) {
+            $query->whereHas('user', function ($query) {
                 $query->where('nama', 'like', "%{$this->search}%");
             });
         })->paginate($this->perPage);
