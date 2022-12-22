@@ -38,7 +38,11 @@ class BerandaController extends Controller
     {
         try {
             $user = User::where('username', $request->username)->first();
-            $role = $request->role == 'web' ? 'user' : $request->role;
+            if ($request->role == 'web') {
+                $role = 'user';
+            } else {
+                $role = $user->role;
+            }
 
             if ($user && $user->role != $role) {
                 return redirect()->route('login')->with('error', 'Gagal Login');
