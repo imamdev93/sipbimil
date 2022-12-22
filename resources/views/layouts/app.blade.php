@@ -45,7 +45,7 @@
                             <!-- Start Header Menu -->
                             <ul class="header-nav">
                                 <li><a href="/">Beranda</a></li>
-                                <li><a href="/dashboard">Monitoring</a></li>
+                                {{-- <li><a href="/dashboard">Monitoring</a></li> --}}
                             </ul>
                             <!-- End Header Menu -->
 

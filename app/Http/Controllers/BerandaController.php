@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Models\Balita;
 use App\Models\IbuHamil;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -36,6 +37,13 @@ class BerandaController extends Controller
     public function loginProcess(LoginRequest $request)
     {
         try {
+            $user = User::where('username', $request->username)->first();
+            $role = $request->role == 'web' ? 'user' : $request->role;
+
+            if ($user && $user->role != $role) {
+                return redirect()->route('login')->with('error', 'Gagal Login');
+            }
+
             if (!Auth::guard($request->role)->attempt($request->only('username', 'password'))) {
                 return redirect()->route('login')->with('error', 'Gagal Login');
             }
