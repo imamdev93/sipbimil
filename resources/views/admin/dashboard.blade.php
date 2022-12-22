@@ -67,7 +67,7 @@
                                 <i class="fa fa-female fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Ibu Hamil Normal</h5>
+                                <h5>Total Ibu Hamil Normal</h5>
                                 <h2 class="font-bold" style="font-size: 20px">{{ $bumilNormal }}</h2>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <i class="fa fa-female fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Ibu Hamil Kurus</h5>
+                                <h5>Total Ibu Hamil Kurus</h5>
                                 <h2 class="font-bold" style="font-size: 20px">{{ $bumilKurus }}</h2>
                             </div>
                         </div>
