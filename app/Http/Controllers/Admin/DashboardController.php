@@ -14,12 +14,10 @@ class DashboardController extends Controller
         $data['balita'] = Balita::count();
         $data['ibuhamil'] = IbuHamil::count();
 
-        $data['balitaGiziBaik'] = Balita::where('status', 'Gizi Baik')->count();
-        $data['balitaGiziBuruk'] = Balita::where('status', 'Gizi Buruk')->count();
-        $data['balitaGiziKurang'] = Balita::where('status', 'Gizi Kurang')->count();
-        $data['balitaGiziLebih'] = Balita::where('status', 'Gizi Lebih')->count();
-        $data['balitaObesitas'] = Balita::where('status', 'Obesitas')->count();
-        $data['balitaBeresikoGiziLebih'] = Balita::where('status', 'Beresiko gizi lebih')->count();
+        $data['balitaGemuk'] = Balita::where('status', 'Gemuk')->count();
+        $data['balitaSangatKurus'] = Balita::where('status', 'Sangat Kurus')->count();
+        $data['balitaKurus'] = Balita::where('status', 'Kurus')->count();
+        $data['balitaNormal'] = Balita::where('status', 'Normal')->count();
 
         $data['bumilKurus'] = IbuHamil::where('status', 'Kurus')->count();
         $data['bumilNormal'] = IbuHamil::where('status', 'Normal')->count();

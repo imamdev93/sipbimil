@@ -41,8 +41,8 @@
                                 <i class="fa fa-child fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Total Balita Gizi Baik</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaGiziBaik }}</h2>
+                                <h5>Total Balita Normal</h5>
+                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaNormal }}</h2>
                             </div>
                         </div>
                     </div>
@@ -54,8 +54,8 @@
                                 <i class="fa fa-child fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Total Balita Gizi Buruk</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaGiziBuruk }}</h2>
+                                <h5>Total Balita Gemuk</h5>
+                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaGemuk }}</h2>
                             </div>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
                                 <i class="fa fa-child fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Total Balita Gizi Kurang</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaGiziKurang }}</h2>
+                                <h5>Total Balita Sangat Kurus</h5>
+                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaSangatKurus }}</h2>
                             </div>
                         </div>
                     </div>
@@ -106,8 +106,8 @@
                                 <i class="fa fa-child fa-4x"></i>
                             </div>
                             <div class="col-8 text-right">
-                                <h5>Total Balita Beresiko Gizi Lebih</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaBeresikoGiziLebih }}</h2>
+                                <h5>Total Balita Kurus</h5>
+                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaKurus }}</h2>
                             </div>
                         </div>
                     </div>
@@ -139,30 +139,8 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="widget style1 navy-bg">
-                        <div class="row">
-                            <div class="col-4">
-                                <i class="fa fa-child fa-4x"></i>
-                            </div>
-                            <div class="col-8 text-right">
-                                <h5>Total Balita Gizi Lebih</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaGiziLebih }}</h2>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="widget style1 navy-bg">
-                        <div class="row">
-                            <div class="col-4">
-                                <i class="fa fa-child fa-4x"></i>
-                            </div>
-                            <div class="col-8 text-right">
-                                <h5>Total Balita Obesitas</h5>
-                                <h2 class="font-bold" style="font-size: 20px">{{ $balitaObesitas }}</h2>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="widget style1 blue-bg">

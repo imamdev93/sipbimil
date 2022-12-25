@@ -105,18 +105,14 @@ class Balita extends Model
     // fungsi untuk menentukan status
     public static function getStatus($result, $penilaian)
     {
-        $status = 'Obesitas';
+        $status = 'Gemuk';
 
         if ($result < $penilaian->negatif_tiga_sd) {
-            $status = 'Gizi Buruk';
+            $status = 'Sangat Kurus';
         } elseif ($result >= $penilaian->negatif_tiga_sd && $result < $penilaian->negatif_dua_sd) {
-            $status = 'Gizi Kurang';
-        } elseif ($result >= $penilaian->negatif_dua_sd && $result <= $penilaian->positif_satu_sd) {
-            $status = 'Gizi Baik';
-        } elseif ($result > $penilaian->positif_satu_sd && $result <= $penilaian->positif_dua_sd) {
-            $status = 'Berisiko gizi lebih';
-        } elseif ($result > $penilaian->positif_dua_sd && $result <= $penilaian->positif_tiga_sd) {
-            $status = 'Gizi Lebih';
+            $status = 'Kurus';
+        } elseif ($result >= $penilaian->negatif_dua_sd && $result <= $penilaian->positif_dua_sd) {
+            $status = 'Normal';
         }
 
         return $status;
