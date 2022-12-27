@@ -119,6 +119,12 @@
                             {{ $data ? $data->tanggal_pengukuran : '-' }}
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-lg-4 col-form-label">Posyandu</label>
+                        <div class="col-lg-8 mt-2">
+                            {{ $data ? $data->posyandu->nama : '-' }}
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
