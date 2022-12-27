@@ -20,6 +20,6 @@ class GiziIbuHamil extends Model
 
     public function posyandu()
     {
-        return $this->belongsTo(Posyandu::class, 'poasyandu_id', 'id');
+        return $this->belongsTo(Posyandu::class, 'posyandu_id', 'id');
     }
 }
