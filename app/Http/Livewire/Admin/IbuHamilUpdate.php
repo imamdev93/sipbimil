@@ -32,6 +32,7 @@ class IbuHamilUpdate extends Component
             'tanggal_lahir' => 'required|date',
             'rt' => 'required|numeric|min:1',
             'rw' => 'required|numeric|min:1',
+            'alamat' => 'required',
         ]);
         try {
             $this->ibu_hamil->update([
