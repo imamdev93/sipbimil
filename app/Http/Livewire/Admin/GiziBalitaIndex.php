@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Exports\GiziBalitaExport;
+use App\Models\Balita;
 use App\Models\GiziBalita;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -38,6 +39,8 @@ class GiziBalitaIndex extends Component
     {
         try {
             $this->data->delete();
+            $statusExist = GiziBalita::where('balita_id', $this->data->balita_id)->latest()->first()->status ?? null;
+            Balita::find($this->data->balita_id)->update(['status' => $statusExist]);
             return redirect()->route('admin.gizi-balita.index')->with('success', 'Berhasil menghapus data');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Exports\GiziIbuHamilExport;
 use App\Models\GiziIbuHamil;
+use App\Models\IbuHamil;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Excel;
@@ -62,6 +63,8 @@ class GiziIbuHamilIndex extends Component
     {
         try {
             $this->data->delete();
+            $statusExist = GiziIbuHamil::where('ibu_hamil_id', $this->data->ibu_hamil_id)->latest()->first()->status ?? null;
+            IbuHamil::find($this->data->ibu_hamil_id)->update(['status' => $statusExist]);
             return redirect()->route('admin.gizi-ibu-hamil.index')->with('success', 'Berhasil menghapus data');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());

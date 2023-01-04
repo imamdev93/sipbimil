@@ -33,6 +33,8 @@ class IbuHamil extends Model
             GiziIbuHamil::updateOrCreate([
                 'id' => $id
             ], $request);
+
+            IbuHamil::find($request['ibu_hamil_id'])->update(['status' => $request['status']]); // ubah status ibu hamil
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }

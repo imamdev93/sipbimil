@@ -22,8 +22,8 @@ class DashboardController extends Controller
         $data['bumilKurus'] = IbuHamil::where('status', 'Kurus')->count();
         $data['bumilNormal'] = IbuHamil::where('status', 'Normal')->count();
         $data['bumilGemuk'] = IbuHamil::where('status', 'Gemuk')->count();
-        $data['bumilObase1'] = IbuHamil::where('status', 'Obase I')->count();
-        $data['bumilObase2'] = IbuHamil::where('status', 'Obase II')->count();
+        $data['bumilObase1'] = IbuHamil::where('status', 'Obese I')->count();
+        $data['bumilObase2'] = IbuHamil::where('status', 'Obese II')->count();
         return view('admin.dashboard', $data);
     }
 }
