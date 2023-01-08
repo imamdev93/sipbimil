@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\GiziIbuHamilController;
 use App\Http\Controllers\Admin\IbuHamilController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\Admin\OperatorController;
+use App\Http\Controllers\Admin\RekapanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('gizi-ibu-hamil', GiziIbuHamilController::class);
     //Data Operator
     Route::resource('operator', OperatorController::class);
+
+    Route::get('rekapan/ibu-hamil', [RekapanController::class, 'getBumilRekap']);
+    Route::get('rekapan/balita', [RekapanController::class, 'getBalitaRekap']);
 });

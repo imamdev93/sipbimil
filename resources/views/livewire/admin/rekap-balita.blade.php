@@ -1,22 +1,46 @@
 <div class="col-lg-12">
     <div class="ibox ">
         <div class="ibox-title">
-            <h5>Daftar Gizi Ibu Hamil</h5>
+            <h5>Rekap Gizi Balita</h5>
             <div class="ibox-tools">
-                <a href="#" wire:click="export" class="btn btn-primary btn-sm">Export Laporan</a>
-                <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                {{-- <a href="#" wire:click="export" class="btn btn-primary btn-sm">Export Laporan</a>
+                <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a> --}}
             </div>
         </div>
         <div class="ibox-content table-responsive">
             <div class="row mb-3">
                 <div class="col-md-3">
                     <select wire:model="status" class="form-control">
-                        <option value="">Semua Status</option>
+                        <option value="">Pilih Status</option>
+                        <option value="Sangat Kurus">Sangat Kurus</option>
                         <option value="Kurus">Kurus</option>
                         <option value="Normal">Normal</option>
                         <option value="Gemuk">Gemuk</option>
-                        <option value="Obese I">Obese I</option>
-                        <option value="Obese II">Obese II</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select wire:model="posyandu_id" class="form-control">
+                        <option value="">Semua Posyandu</option>
+                        @foreach ($posyandu as $val)
+                            <option value="{{ $val->id }}">{{ $val->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select wire:model="bulan" class="form-control">
+                        <option value="">Semua Bulan</option>
+                        <option value="01">Januari</option>
+                        <option value="02">Februari</option>
+                        <option value="03">Maret</option>
+                        <option value="04">April</option>
+                        <option value="05">Mei</option>
+                        <option value="06">Juni</option>
+                        <option value="07">Juli</option>
+                        <option value="08">Agustus</option>
+                        <option value="09">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">Nopember</option>
+                        <option value="12">Desember</option>
                     </select>
                 </div>
             </div>
@@ -38,6 +62,7 @@
                     <tr>
                         <th width="2%">#</th>
                         <th width="15%">Nama</th>
+                        <th width="15%">Posyandu</th>
                         <th width="15%">Tinggi Badan (CM)</th>
                         <th width="15%">Berat Badan (KG)</th>
                         <th width="20%">Tanggal Pengukuran</th>
@@ -51,7 +76,8 @@
                         @foreach ($bumil as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->ibuhamil->user->nama ?? '-' }}</td>
+                                <td>{{ $row->balita->nama ?? '-' }}</td>
+                                <td>{{ $row->posyandu->nama ?? '-' }}</td>
                                 <td>{{ $row->tinggi_badan ?? '-' }}</td>
                                 <td>{{ $row->berat_badan ?? '-' }}</td>
                                 <td>{{ $row->tanggal_pengukuran ?? '-' }}</td>
@@ -61,11 +87,6 @@
                                     <a href="#" class="btn btn-sm btn-secondary"
                                         wire:click="show({{ $row->id }})" data-toggle="modal"
                                         data-target="#show"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-sm btn-primary"
-                                        href="{{ route('admin.gizi-ibu-hamil.edit', $row->id) }}"><i
-                                            class="fa fa-edit"></i></a>
-                                    <button class="btn btn-sm btn-danger" wire:click="show({{ $row->id }})"
-                                        data-toggle="modal" data-target="#hapus"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -93,7 +114,7 @@
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label">Nama</label>
                         <div class="col-lg-8 mt-2">
-                            {{ $data ? $data->ibuhamil->user->nama ?? '-' : '-' }}
+                            {{ $data ? $data->balita->nama ?? '-' : '-' }}
                         </div>
                     </div>
                     <div class="form-group row">
@@ -133,5 +154,4 @@
             </div>
         </div>
     </div>
-    @include('admin.modal-delete')
 </div>

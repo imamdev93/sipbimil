@@ -39,6 +39,17 @@
             <a href="{{ route('admin.gizi-ibu-hamil.index') }}"><i class="fa fa-female"></i> <span
                     class="nav-label">Data Gizi Ibu Hamil</span></a>
         </li>
+        <li class="{{ request()->is('admin/rekapan/*') ? 'active' : '' }}">
+            <a href="#"><i class="fa fa-book"></i><span class="nav-label">Rekapan</span></a>
+            <ul class="nav nav-second-level collapse">
+                <li class="{{ request()->is('admin/rekapan/ibu-hamil*') ? 'active' : '' }}"><a
+                        href="/admin/rekapan/ibu-hamil">Gizi
+                        Ibu Hamil</a></li>
+                <li class="{{ request()->is('admin/rekapan/balita*') ? 'active' : '' }}"><a
+                        href="/admin/rekapan/balita">Gizi
+                        Balita</a></li>
+            </ul>
+        </li>
         @if (auth()->guard('admin')->user()->role == 'admin')
             <li class="{{ Request::routeIs('admin.operator.*') ? 'active' : '' }}">
                 <a href="{{ route('admin.operator.index') }}"><i class="fa fa-users"></i> <span class="nav-label">Data
