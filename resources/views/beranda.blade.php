@@ -29,8 +29,85 @@
             </div>
         </div>
     </div>
+    <div class="contact-banner-display-section section-top-gap-150">
+        <div class="box-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Start Contact Banner Area -->
+                        <div class="custom-grid-12">
+                            <!-- Start Faq Area -->
+                            <ul class="faq-list-area">
+                                <!-- Start Faq Single Item -->
+                                <li class="faq-single-item">
+                                    {{-- <div class="number">01</div> --}}
+
+                                    <div class="content">
+                                        <h5 class="title">Grafik Balita</h5>
+                                        <div id="balita_chart"></div><br>
+                                        <h5 class="title">Grafik Ibu Hamil</h5>
+                                        <div id="bumil_chart"></div>
+                                    </div>
+                                    <div class="rows">
+                                        <select name="tanggal" id="pilih-bulan" class="form-control">
+                                            <option value="">Semua</option>
+                                            <option value="{{ date('Y') . '-01' }}"
+                                                {{ $tanggal == date('Y') . '-01' ? 'selected' : '' }}>Januari
+                                                {{ date('Y') }} </option>
+                                            <option value="{{ date('Y') . '-02' }}"
+                                                {{ $tanggal == date('Y') . '-02' ? 'selected' : '' }}>Februari
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-03' }}"
+                                                {{ $tanggal == date('Y') . '-03' ? 'selected' : '' }}>Maret
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-04' }}"
+                                                {{ $tanggal == date('Y') . '-04' ? 'selected' : '' }}>April
+                                                {{ date('Y') }} </option>
+                                            <option value="{{ date('Y') . '-05' }}"
+                                                {{ $tanggal == date('Y') . '-05' ? 'selected' : '' }}>Mei
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-06' }}"
+                                                {{ $tanggal == date('Y') . '-06' ? 'selected' : '' }}>Juni
+                                                {{ date('Y') }} </option>
+                                            <option value="{{ date('Y') . '-07' }}"
+                                                {{ $tanggal == date('Y') . '-07' ? 'selected' : '' }}>Juli
+                                                {{ date('Y') }} </option>
+                                            <option value="{{ date('Y') . '-08' }}"
+                                                {{ $tanggal == date('Y') . '-08' ? 'selected' : '' }}>Agustus
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-09' }}"
+                                                {{ $tanggal == date('Y') . '-09' ? 'selected' : '' }}>September
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-10' }}"
+                                                {{ $tanggal == date('Y') . '-10' ? 'selected' : '' }}>Oktober
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-11' }}"
+                                                {{ $tanggal == date('Y') . '-11' ? 'selected' : '' }}>Nopember
+                                                {{ date('Y') }}
+                                            </option>
+                                            <option value="{{ date('Y') . '-12' }}"
+                                                {{ $tanggal == date('Y') . '-12' ? 'selected' : '' }}>Desember
+                                                {{ date('Y') }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Contact Banner Area -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ...::: Start Essential Display Section :::... -->
-    <div class="essential-section section-inner-padding-200 section-fluid-100 section-inner-bg">
+    {{-- <div class="essential-section section-inner-padding-200 section-fluid-100 section-inner-bg">
         <div class="box-wrapper">
             <div class="container-fluid">
                 <h2 style="text-align: center">Kalkulasi Data Ibu Hamil dan Balita</h2><br>
@@ -129,6 +206,89 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- ...::: End Essential Display Section :::... -->
 @endsection
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        $('#pilih-bulan').change(function() {
+            let request = $(this).val()
+            window.location.href = "{{ route('beranda') }}?tanggal=" + request
+        })
+    </script>
+    <script>
+        var options = {
+            series: [{
+                name: 'Hasil',
+                data: {!! json_encode($rowBalita) !!}
+            }],
+            chart: {
+                type: 'bar',
+                height: 400,
+                stacked: true,
+            },
+            colors: ['#3232ac'],
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            legend: {
+                position: 'bottom',
+                horizontalAlign: 'left'
+            },
+            xaxis: {
+                categories: {!! json_encode($label) !!},
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#balita_chart"), options);
+        chart.render();
+
+        var optionsBumil = {
+            series: [{
+                name: 'Hasil',
+                data: {!! json_encode($rowBumil) !!}
+            }],
+            chart: {
+                type: 'bar',
+                height: 400,
+                stacked: true,
+            },
+            colors: ['#3232ac'],
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            legend: {
+                position: 'bottom',
+                horizontalAlign: 'left'
+            },
+            xaxis: {
+                categories: {!! json_encode($label) !!},
+            },
+        };
+
+        var chartBumil = new ApexCharts(document.querySelector("#bumil_chart"), optionsBumil);
+        chartBumil.render();
+
+        function getRandomColor($total) {
+            const categories = [];
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var j = 0; j < $total; j++) {
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                categories.push(color);
+                color = '#';
+            }
+
+            return categories;
+        }
+    </script>
+@endpush

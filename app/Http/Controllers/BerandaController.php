@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Models\Balita;
+use App\Models\GiziBalita;
+use App\Models\GiziIbuHamil;
 use App\Models\IbuHamil;
+use App\Models\Posyandu;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,13 +16,35 @@ use Illuminate\Http\Request;
 class BerandaController extends Controller
 {
     // Menampilkan Halaman Beranda
-    public function index()
+    public function index(Request $request)
     {
+        $posyandu = Posyandu::all()->pluck('nama', 'id')->toArray();
+
+        foreach ($posyandu as $key => $value) {
+            $data['label'][] = $value;
+            $data['rowBumil'][] = $this->countData($request, $key)['bumil'];
+            $data['rowBalita'][] = $this->countData($request, $key)['balita'];
+        }
+
+        $data['tanggal'] = $request->tanggal;
         $data['totalIbuHamil'] = IbuHamil::count(); //menghitung data ibu hamil
         $data['totalBalita'] = Balita::count(); //menghitung data balita
         $data['totalBalitaByStatus'] = Balita::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi balita berdasarkan status
         $data['totalIbuHamilByStatus'] = IbuHamil::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi ibu hamil berdasarkan status
         return view('beranda', $data);
+    }
+
+    public function countData($request, $posyanduId)
+    {
+        $data['bumil'] = GiziIbuHamil::when($request->tanggal, function ($query) use ($request) {
+            $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
+        })->where('posyandu_id', $posyanduId)->count();
+
+        $data['balita'] = GiziBalita::when($request->tanggal, function ($query) use ($request) {
+            $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
+        })->where('posyandu_id', $posyanduId)->count();
+
+        return $data;
     }
 
     // Redirect ke halaman login user
