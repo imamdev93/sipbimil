@@ -19,6 +19,8 @@ class BerandaController extends Controller
     public function index(Request $request)
     {
         $posyandu = Posyandu::all()->pluck('nama', 'id')->toArray();
+        $labelBalita = ['Sangat Kurus', 'Kurus', 'Normal', 'Gemuk'];
+        $labelBumil = ['Kurus', 'Normal', 'Gemuk', 'Obese I', 'Obese II'];
 
         foreach ($posyandu as $key => $value) {
             $data['label'][] = $value;
@@ -26,11 +28,10 @@ class BerandaController extends Controller
             $data['rowBalita'][] = $this->countData($request, $key)['balita'];
         }
 
+        $data['grafikByStatus'] = $this->grafikByStatus($labelBalita, $labelBumil, $posyandu, $request);
+
         $data['tanggal'] = $request->tanggal;
-        $data['totalIbuHamil'] = IbuHamil::count(); //menghitung data ibu hamil
-        $data['totalBalita'] = Balita::count(); //menghitung data balita
-        $data['totalBalitaByStatus'] = Balita::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi balita berdasarkan status
-        $data['totalIbuHamilByStatus'] = IbuHamil::select('status', DB::raw('count(*) as total'))->groupBy('status')->get(); //Menghitung data gizi ibu hamil berdasarkan status
+
         return view('beranda', $data);
     }
 
@@ -38,14 +39,43 @@ class BerandaController extends Controller
     {
         $data['bumil'] = GiziIbuHamil::when($request->tanggal, function ($query) use ($request) {
             $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
-        })->where('posyandu_id', $posyanduId)->count();
+        })->where('posyandu_id', $posyanduId)->distinct('ibu_hamil_id')->count('ibu_hamil_id');
 
         $data['balita'] = GiziBalita::when($request->tanggal, function ($query) use ($request) {
             $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
-        })->where('posyandu_id', $posyanduId)->count();
+        })->where('posyandu_id', $posyanduId)->distinct('balita_id')->count('balita_id');
 
         return $data;
     }
+
+    public function grafikByStatus($balita, $bumil, $posyandu, $request)
+    {
+        $data['balita'] = [];
+        $data['bumil'] = [];
+
+        foreach($balita as $key => $val){
+            $data['balita'][$key]['name'] = $val;
+            foreach($posyandu as $k => $v){
+                $count = GiziBalita::when($request->tanggal, function ($query) use ($request) {
+                    $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
+                })->where('posyandu_id', $k)->where('status', $val)->distinct('balita_id')->count('balita_id');
+                $data['balita'][$key]['data'][] = $count;
+            }
+        }
+
+        foreach($bumil as $key => $val){
+            $data['bumil'][$key]['name'] = $val;
+            foreach($posyandu as $k => $v){
+                $count = GiziIbuHamil::when($request->tanggal, function ($query) use ($request) {
+                    $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
+                })->where('posyandu_id', $k)->where('status', $val)->distinct('ibu_hamil_id')->count('ibu_hamil_id');
+                $data['bumil'][$key]['data'][] = $count;
+            }
+        }
+
+        return $data;
+    }
+
 
     // Redirect ke halaman login user
     public function login()
@@ -63,10 +93,9 @@ class BerandaController extends Controller
     {
         try {
             $user = User::where('username', $request->username)->first();
+            $role = $request->role;
             if ($request->role == 'web') {
                 $role = 'user';
-            } else {
-                $role = $user->role;
             }
 
             if ($user && $user->role != $role) {

@@ -43,10 +43,26 @@
                                     {{-- <div class="number">01</div> --}}
 
                                     <div class="content">
-                                        <h5 class="title">Grafik Balita</h5>
-                                        <div id="balita_chart"></div><br>
-                                        <h5 class="title">Grafik Ibu Hamil</h5>
-                                        <div id="bumil_chart"></div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h5 class="title">Grafik Balita</h5>
+                                                <div id="balita_chart"></div><br>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h5 class="title">Grafik Ibu Hamil</h5>
+                                                <div id="bumil_chart"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h5 class="title">Grafik Balita Berdasarkan Status</h5>
+                                                <div id="balita_by_status"></div><br>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h5 class="title">Grafik Ibu Hamil Berdasarkan Status</h5>
+                                                <div id="bumil_by_status"></div><br>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="rows">
                                         <select name="tanggal" id="pilih-bulan" class="form-control">
@@ -242,6 +258,22 @@
             xaxis: {
                 categories: {!! json_encode($label) !!},
             },
+            yaxis:[
+                {
+                    show:false,
+                    labels:{
+                        formatter: function(val){
+                            return parseInt(val)
+                        }
+                    }
+                }
+            ],
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val;
+                }
+            },
         };
 
         var chart = new ApexCharts(document.querySelector("#balita_chart"), options);
@@ -271,10 +303,126 @@
             xaxis: {
                 categories: {!! json_encode($label) !!},
             },
+            yaxis:[
+                {
+                    show:false,
+                    labels:{
+                        formatter: function(val){
+                            return parseInt(val)
+                        }
+                    }
+                }
+            ],
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val;
+                }
+            },
+
         };
 
         var chartBumil = new ApexCharts(document.querySelector("#bumil_chart"), optionsBumil);
         chartBumil.render();
+
+
+        var optionsBalitaByStatus = {
+          series: {!! json_encode($grafikByStatus['balita']) !!},
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true,
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              position: 'bottom',
+              offsetX: -10,
+              offsetY: 0
+            }
+          }
+        }],
+        xaxis: {
+            categories: {!! json_encode($label) !!},
+        },
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: 'right',
+          offsetX: 0,
+          offsetY: 50
+        },
+        dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val;
+                }
+            },
+            yaxis:[
+                {
+                    show:false,
+                    labels:{
+                        formatter: function(val){
+                            return parseInt(val)
+                        }
+                    }
+                }
+            ],
+        };
+
+        var chartBalitaByStatus = new ApexCharts(document.querySelector("#balita_by_status"), optionsBalitaByStatus);
+        chartBalitaByStatus.render();
+
+        var optionsBumilByStatus = {
+          series: {!! json_encode($grafikByStatus['bumil']) !!},
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true,
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              position: 'bottom',
+              offsetX: -10,
+              offsetY: 0
+            }
+          }
+        }],
+        xaxis: {
+            categories: {!! json_encode($label) !!},
+        },
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: 'right',
+          offsetX: 0,
+          offsetY: 50
+        },
+        dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val;
+                }
+            },
+            yaxis:[
+                {
+                    show:false,
+                    labels:{
+                        formatter: function(val){
+                            return parseInt(val)
+                        }
+                    }
+                }
+            ],
+        };
+
+        var chartBumilByStatus = new ApexCharts(document.querySelector("#bumil_by_status"), optionsBumilByStatus);
+        chartBumilByStatus.render();
 
         function getRandomColor($total) {
             const categories = [];
