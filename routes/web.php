@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/login', [BerandaController::class, 'login'])->name('login');
 Route::post('/login', [BerandaController::class, 'loginProcess'])->name('loginProcess');
-Route::get('/dashboard', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware('auth:web');
-Route::get('/logout', [BerandaController::class, 'logout'])->name('logout')->middleware('auth:web');
-Route::get('/data-balita', [BerandaController::class, 'getDataBalita'])->name('balita')->middleware('auth:web');
+Route::get('/dashboard', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware('auth:web,admin');
+Route::get('/logout', [BerandaController::class, 'logout'])->name('logout')->middleware('auth:web,admin');
+Route::get('/data-balita', [BerandaController::class, 'getDataBalita'])->name('balita')->middleware('auth:web,admin');
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('login', [AuthController::class, 'loginView'])->name('loginView');

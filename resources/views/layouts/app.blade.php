@@ -50,13 +50,13 @@
                             <!-- End Header Menu -->
 
                             <div class="header-btn-link text-end">
-                                @auth('web')
+                                @if(auth()->guard('web')->check() || auth()->guard('admin')->check())
                                     <a href="/logout"
                                         class="btn btn-lg btn-default-outline-alt btn-animate"><span>Logout</span></a>
                                 @else
                                     <a href="/login"
                                         class="btn btn-lg btn-default-outline-alt btn-animate"><span>Login</span></a>
-                                @endauth
+                                @endif
 
                             </div>
                         </div>
