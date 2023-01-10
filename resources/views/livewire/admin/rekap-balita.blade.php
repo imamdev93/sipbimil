@@ -3,8 +3,8 @@
         <div class="ibox-title">
             <h5>Rekap Gizi Balita</h5>
             <div class="ibox-tools">
-                {{-- <a href="#" wire:click="export" class="btn btn-primary btn-sm">Export Laporan</a>
-                <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a> --}}
+                <a href="#" wire:click="export" class="btn btn-primary btn-sm">Export Laporan</a>
+                {{-- <a href="{{ route('admin.gizi-ibu-hamil.create') }}" class="btn btn-primary btn-sm">Tambah Data</a> --}}
             </div>
         </div>
         <div class="ibox-content table-responsive">
