@@ -29,7 +29,7 @@
             <div class="box-wrapper">
                 <div class="container">
                     <div class="row">
-                        <h4><b>Perhitungan Gizi Menurut <i>Antropometri</i> </b></h4><br><br>
+                        <h4><b>Perhitungan Gizi Menurut <i>Antropometri</i> BB/TB atau BB/PB </b></h4><br><br>
                         <div class="col-12">
                             <!-- Start Contact Banner Area -->
                             <div class="custom-grid-12">
@@ -70,7 +70,7 @@
             <div class="box-wrapper">
                 <div class="container">
                     <div class="row">
-                        <h4><b>Perhitungan Gizi Menurut IMT = BB : (TB:100)²</b></h4><br><br>
+                        <h4><b>Perhitungan Gizi Sesuai Rumus (IMT = BB : (TB:100)²)</b></h4><br><br>
                         <div class="col-12">
                             <!-- Start Contact Banner Area -->
                             <div class="custom-grid-12">

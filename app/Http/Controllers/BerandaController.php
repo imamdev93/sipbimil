@@ -96,6 +96,8 @@ class BerandaController extends Controller
             $role = $request->role;
             if ($request->role == 'web') {
                 $role = 'user';
+            }elseif($user->role == 'operator'){
+                $role = 'operator';
             }
 
             if ($user && $user->role != $role) {
