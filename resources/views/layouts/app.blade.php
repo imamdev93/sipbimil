@@ -50,7 +50,8 @@
                             <!-- End Header Menu -->
 
                             <div class="header-btn-link text-end">
-                                @if(auth()->guard('web')->check() || auth()->guard('admin')->check())
+                                @if (auth()->guard('web')->check() ||
+                                        auth()->guard('admin')->check())
                                     <a href="/logout"
                                         class="btn btn-lg btn-default-outline-alt btn-animate"><span>Logout</span></a>
                                 @else
@@ -97,7 +98,14 @@
                         <ul>
                             <li><a href="/"><span>Beranda</span></a></li>
                             <li><a href="/dashboard"><span>Monitoring</span></a></li>
-                            <li><a href="/login"><span>Login</span></a></li>
+                            @if (auth()->guard('web')->check() ||
+                                    auth()->guard('admin')->check())
+                                <li>
+                                    <a href="/logout"><span>Logout</span></a>
+                                </li>
+                            @else
+                                <li><a href="/login"><span>Login</span></a></li>
+                            @endif
                         </ul>
                     </div> <!-- End Mobile Menu Nav -->
                 </div> <!-- End Mobile Menu -->
