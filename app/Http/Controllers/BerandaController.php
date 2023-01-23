@@ -53,9 +53,9 @@ class BerandaController extends Controller
         $data['balita'] = [];
         $data['bumil'] = [];
 
-        foreach($balita as $key => $val){
+        foreach ($balita as $key => $val) {
             $data['balita'][$key]['name'] = $val;
-            foreach($posyandu as $k => $v){
+            foreach ($posyandu as $k => $v) {
                 $count = GiziBalita::when($request->tanggal, function ($query) use ($request) {
                     $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
                 })->where('posyandu_id', $k)->where('status', $val)->distinct('balita_id')->count('balita_id');
@@ -63,9 +63,9 @@ class BerandaController extends Controller
             }
         }
 
-        foreach($bumil as $key => $val){
+        foreach ($bumil as $key => $val) {
             $data['bumil'][$key]['name'] = $val;
-            foreach($posyandu as $k => $v){
+            foreach ($posyandu as $k => $v) {
                 $count = GiziIbuHamil::when($request->tanggal, function ($query) use ($request) {
                     $query->where(DB::raw('DATE_FORMAT(tanggal_pengukuran, "%Y-%m")'), $request->tanggal);
                 })->where('posyandu_id', $k)->where('status', $val)->distinct('ibu_hamil_id')->count('ibu_hamil_id');
@@ -96,7 +96,7 @@ class BerandaController extends Controller
             $role = $request->role;
             if ($request->role == 'web') {
                 $role = 'user';
-            }elseif($user->role == 'operator'){
+            } elseif ($user->role == 'operator') {
                 $role = 'operator';
             }
 
@@ -167,7 +167,8 @@ class BerandaController extends Controller
     //fungsi untuk keluar dari aplikasi
     public function logout()
     {
-        auth()->guard('web')->logout();
+        $guard = auth()->guard('web')->check() ? 'web' : 'admin';
+        auth()->guard($guard)->logout();
         return view('login');
     }
 }
