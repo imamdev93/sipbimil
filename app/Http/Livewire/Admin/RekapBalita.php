@@ -52,7 +52,13 @@ class RekapBalita extends Component
             'gizi_balita.tinggi_badan',
             'gizi_balita.status',
             'gizi_balita.hasil',
-        )
+        )->when($this->status, function ($query) {
+            $query->where('gizi_balita.status', $this->status);
+        })->when($this->posyandu_id, function ($query) {
+            $query->where('gizi_balita.posyandu_id', $this->posyandu_id);
+        })->when($this->bulan, function ($query) {
+            $query->whereMonth('tanggal_pengukuran', $this->bulan);
+        })
             ->leftjoin('balita', 'balita.id', 'gizi_balita.balita_id')
             ->leftjoin('users', 'users.id', 'balita.user_id')
             ->leftjoin('posyandu', 'posyandu.id', 'gizi_balita.posyandu_id')

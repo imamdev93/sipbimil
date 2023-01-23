@@ -156,19 +156,17 @@
             xaxis: {
                 categories: {!! json_encode($label) !!},
             },
-            yaxis:[
-                {
-                    show:false,
-                    labels:{
-                        formatter: function(val){
-                            return parseInt(val)
-                        }
+            yaxis: [{
+                show: false,
+                labels: {
+                    formatter: function(val) {
+                        return parseInt(val)
                     }
                 }
-            ],
+            }],
             dataLabels: {
                 enabled: true,
-                formatter: function (val) {
+                formatter: function(val) {
                     return val;
                 }
             },
@@ -201,19 +199,17 @@
             xaxis: {
                 categories: {!! json_encode($label) !!},
             },
-            yaxis:[
-                {
-                    show:false,
-                    labels:{
-                        formatter: function(val){
-                            return parseInt(val)
-                        }
+            yaxis: [{
+                show: false,
+                labels: {
+                    formatter: function(val) {
+                        return parseInt(val)
                     }
                 }
-            ],
+            }],
             dataLabels: {
                 enabled: true,
-                formatter: function (val) {
+                formatter: function(val) {
                     return val;
                 }
             },
@@ -225,98 +221,94 @@
 
 
         var optionsBalitaByStatus = {
-          series: {!! json_encode($grafikByStatus['balita']) !!},
-          chart: {
-          type: 'bar',
-          height: 350,
-          stacked: true,
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
+            series: {!! json_encode($grafikByStatus['balita']) !!},
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            xaxis: {
+                categories: {!! json_encode($label) !!},
+            },
+            fill: {
+                opacity: 1
+            },
             legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
-        xaxis: {
-            categories: {!! json_encode($label) !!},
-        },
-        fill: {
-          opacity: 1
-        },
-        legend: {
-          position: 'right',
-          offsetX: 0,
-          offsetY: 50
-        },
-        dataLabels: {
+                position: 'right',
+                offsetX: 0,
+                offsetY: 50
+            },
+            dataLabels: {
                 enabled: true,
-                formatter: function (val) {
+                formatter: function(val) {
                     return val;
                 }
             },
-            yaxis:[
-                {
-                    show:false,
-                    labels:{
-                        formatter: function(val){
-                            return parseInt(val)
-                        }
+            yaxis: [{
+                show: false,
+                labels: {
+                    formatter: function(val) {
+                        return parseInt(val)
                     }
                 }
-            ],
+            }],
         };
 
         var chartBalitaByStatus = new ApexCharts(document.querySelector("#balita_by_status"), optionsBalitaByStatus);
         chartBalitaByStatus.render();
 
         var optionsBumilByStatus = {
-          series: {!! json_encode($grafikByStatus['bumil']) !!},
-          chart: {
-          type: 'bar',
-          height: 350,
-          stacked: true,
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
+            series: {!! json_encode($grafikByStatus['bumil']) !!},
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            xaxis: {
+                categories: {!! json_encode($label) !!},
+            },
+            fill: {
+                opacity: 1
+            },
             legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
-        xaxis: {
-            categories: {!! json_encode($label) !!},
-        },
-        fill: {
-          opacity: 1
-        },
-        legend: {
-          position: 'right',
-          offsetX: 0,
-          offsetY: 50
-        },
-        dataLabels: {
+                position: 'right',
+                offsetX: 0,
+                offsetY: 50
+            },
+            dataLabels: {
                 enabled: true,
-                formatter: function (val) {
+                formatter: function(val) {
                     return val;
                 }
             },
-            yaxis:[
-                {
-                    show:false,
-                    labels:{
-                        formatter: function(val){
-                            return parseInt(val)
-                        }
+            yaxis: [{
+                show: false,
+                labels: {
+                    formatter: function(val) {
+                        return parseInt(val)
                     }
                 }
-            ],
+            }],
         };
 
         var chartBumilByStatus = new ApexCharts(document.querySelector("#bumil_by_status"), optionsBumilByStatus);

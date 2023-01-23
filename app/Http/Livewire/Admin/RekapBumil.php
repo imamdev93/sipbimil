@@ -52,10 +52,17 @@ class RekapBumil extends Component
             'gizi_ibu_hamil.tinggi_badan',
             'gizi_ibu_hamil.status',
             'gizi_ibu_hamil.hasil',
-        )
-            ->leftjoin('ibu_hamil', 'ibu_hamil.id', 'gizi_ibu_hamil.ibu_hamil_id')
-            ->leftjoin('users', 'users.id', 'ibu_hamil.user_id')
-            ->leftjoin('posyandu', 'posyandu.id', 'gizi_ibu_hamil.posyandu_id')
+        )->when($this->status, function ($query) {
+            $query->where('gizi_ibu_hamil.status', $this->status);
+        })->when($this->posyandu_id, function ($query) {
+            $query->where('gizi_ibu_hamil.posyandu_id', $this->posyandu_id);
+        })->when($this->bulan, function ($query) {
+            $query->whereMonth('tanggal_pengukuran', $this->bulan);
+        })
+            ->join('ibu_hamil', 'ibu_hamil.id', 'gizi_ibu_hamil.ibu_hamil_id')
+            ->join('users', 'users.id', 'ibu_hamil.user_id')
+            ->join('posyandu', 'posyandu.id', 'gizi_ibu_hamil.posyandu_id')
+
             ->get();
         return Excel::download(new GiziIbuHamilExport($data), 'data-gizi-ibu-hamil-' . date('YmdHis') . '.xlsx');
     }
